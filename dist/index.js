@@ -157,7 +157,7 @@ const px = v => v + 'px';
     value: {
       type: Number,
       require: false,
-      default: 33
+      default: 0
     },
     height: {
       type: Number,
@@ -190,41 +190,8 @@ const px = v => v + 'px';
   computed: {
     progressValue() {
       return 100 - this.value + '%';
-    },
-    switchStyle() {
-      return {
-        width: px(this.width),
-        height: px(this.height)
-      };
-    },
-    itemStyle() {
-      return {
-        height: px(this.height),
-        width: px(this.width),
-        fontFamily: this.fontFamily,
-        fontSize: px(this.fontSize),
-        textAlign: 'center'
-      };
-    },
-    labelStyle() {
-      return {
-        padding: px(this.padding),
-        borderColor: this.borderColor,
-        backgroundColor: this.backgroundColor,
-        color: this.color,
-        transition: s(this.delay)
-      };
     }
-  },
-  data() {
-    return {};
-  },
-  watch: {
-    value: function (val) {
-      console.log('value in progress bar: ' + val);
-    }
-  },
-  methods: {}
+  }
 });
 
 /***/ }),

@@ -45,7 +45,7 @@ export default {
     value: {
       type: Number,
       require: false,
-      default: 33
+      default: 0
     },
     height: {
       type: Number,
@@ -78,42 +78,7 @@ export default {
   computed: {
     progressValue () {
       return 100 - this.value + '%'
-    },
-    switchStyle () {
-      return {
-        width: px(this.width),
-        height: px(this.height)
-      }
-    },
-    itemStyle () {
-      return {
-        height: px(this.height),
-        width: px(this.width),
-        fontFamily: this.fontFamily,
-        fontSize: px(this.fontSize),
-        textAlign: 'center'
-      }
-    },
-    labelStyle () {
-      return {
-        padding: px(this.padding),
-        borderColor: this.borderColor,
-        backgroundColor: this.backgroundColor,
-        color: this.color,
-        transition: s(this.delay)
-      }
     }
-  },
-  data () {
-    return {
-    }
-  },
-  watch: {
-    value: function (val) {
-      console.log('value in progress bar: ' + val)
-    }
-  },
-  methods: {
   }
 }
 </script>
@@ -125,9 +90,7 @@ export default {
   display: inline-flex;
   align-content: stretch;
   .progress-container{
-    //stroke: darken(#392F32,5%);
     stroke-width: 2px;
-    // fill: #392F32;
     .top{
       z-index:2;
     }

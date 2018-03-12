@@ -27,12 +27,6 @@ export default {
     return {
       value: 3
     }
-  },
-  methods: {
-    fullEvent(info) {
-      console.log(info)
-      console.log('triggered full event')
-    }
   }
 }
 </script>

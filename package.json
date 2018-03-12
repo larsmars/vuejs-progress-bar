@@ -1,0 +1,46 @@
+{
+  "name": "vue-progress-bar",
+  "description": "A progress bar component for Vue.js",
+  "version": "0.0.1",
+  "author": "LMH, hejlllars@hotmail.com , softwarefun.no",
+  "license": "MIT",
+  "homepage": "https://github.com/larsmars/vue-progress-bar#readme",
+  "private": false,
+  "scripts": {
+    "build:client": "webpack --config ./webpack.config.js --progress --hide-modules",
+    "build:ssr": "webpack --config ./webpack.ssr.config.js  --progress --hide-modules",
+    "build": "npm run build:client && npm run build:ssr"
+  },
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/larsmars/vue-progress-bar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/larsmars/vue-progress-bar/issues"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  },
+  "keywords": [
+    "vuejs",
+    "vue.js",
+    "progress",
+    "progressbar"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-latest": "^6.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "optimize-css-assets-webpack-plugin": "^3.1.1",
+    "sass-loader": "^5.0.1",
+    "vue": "^2.0.0",
+    "vue-loader": "^11.1.4",
+    "vue-template-compiler": "^2.0.0",
+    "webpack": "^2.2.0",
+    "webpack-merge": "^4.1.0"
+  }
+}

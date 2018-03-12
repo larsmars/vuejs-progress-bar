@@ -1,10 +1,10 @@
 {
-  "name": "vue-progress-bar",
+  "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
   "version": "0.0.1",
   "author": "LMH, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
-  "homepage": "https://github.com/larsmars/vue-progress-bar#readme",
+  "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",
   "private": false,
   "scripts": {
     "build:client": "webpack --config ./webpack.config.js --progress --hide-modules",
@@ -14,10 +14,10 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/larsmars/vue-progress-bar.git"
+    "url": "https://github.com/larsmars/vuejs-progress-bar.git"
   },
   "bugs": {
-    "url": "https://github.com/larsmars/vue-progress-bar/issues"
+    "url": "https://github.com/larsmars/vuejs-progress-bar/issues"
   },
   "peerDependencies": {
     "vue": "^2.0.0"

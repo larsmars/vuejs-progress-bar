@@ -1,4 +1,4 @@
-# vue-progress-bar
+# vuejs-progress-bar
 Progressbar for vue.js
 
 NB! Beta 0.0.1 mode, not ready for prod
@@ -10,12 +10,12 @@ NB! Beta 0.0.1 mode, not ready for prod
 ## Setup
 install:
 ```bash
-npm install vue-progress-bar --save
+npm install vuejs-progress-bar --save
 ```
 
 Import: (in your main.js)
 ```javascript
-import ProgressBar from 'vue-progress-bar'
+import ProgressBar from 'vuejs-progress-bar'
 Vue.use(ProgressBar)
 ```
 ## Usage

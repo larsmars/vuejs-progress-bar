@@ -87,7 +87,7 @@ export default {
 <style lang="scss" scoped>
 
 .progress-bar{
-  display: inline-flex;
+  display: inline-block;
   align-content: stretch;
   .progress-container{
     stroke-width: 2px;

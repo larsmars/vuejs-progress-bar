@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 Progressbar for vue.js
 
-NB! Beta 0.0.1 mode, not ready for prod
+NB! Beta 0.0.2, not ready for prod
 
 [Live demo](http://softwarefun.no/#/progressbar)
 

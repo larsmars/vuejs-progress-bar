@@ -22,9 +22,11 @@ Vue.use(ProgressBar)
 Use: (in your local .vue file/component, html section)
 
 ```xml
-
-      <progress-bar
-       /> 
+  <progress-bar
+    :width="120"
+    :backgroundColor="'lightgray'"
+    :value="value"
+    />
 ```
 
 ### Properties

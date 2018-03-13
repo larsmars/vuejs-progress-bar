@@ -2,12 +2,12 @@
   <div class="progress-bar">
     <svg id="line-progress"
       :style="lineStyle">
-      <g class="progress-container" :stroke="backgroundColor">
+      <g class="progress-container" :stroke="defaultOptions.progress.backgroundColor">
         <line x1="0"
             y1="50%"
             x2="100%"
             y2="50%"
-            :stroke-width="strokeWidth" />
+            :stroke-width="defaultOptions.layout.strokeWidth" />
       </g>
       <g class="progress-content">
         <line
@@ -15,7 +15,7 @@
             y1="50%"
             x2="100%"
             y2="50%"
-            :stroke="color" 
+            :stroke="defaultOptions.progress.color" 
             :fill="'white'" 
             stroke-dasharray="100%"
             :stroke-dashoffset="progressValue"
@@ -27,101 +27,62 @@
 </template>
 
 <script>
-const constants = {
-  textColor: 'white',
-  textShadow: 'black',
-  color: 'green',
-  backgroundColor: 'lightgray',
-  height: 120,
-  width: 120,
-  delay: .4,
-  fontSize: 14,
-  verticalTextAlign: 55,
-  horizontalTextAlign: 40,
-  strokeWidth: 30,
-  strokePadding: 2
-}
-
 const s = x => x + 's'
 const px = v => v + 'px'
 
 export default {
-  name: 'ProgressBar',
+  created () {
+    this.defaultOptions = {
+      text: {
+        color: 'white',
+        shadowEnable: true,
+        shadowColor: 'black',
+        fontSize: 14,
+        fontFamily: 'Helvetica',
+        dynamicPosition: false
+      },
+      progress: {
+        color: 'green',
+        backgroundColor: 'lightgray'
+      },
+      layout: {
+        height: 120,
+        width: 120,
+        verticalTextAlign: 55,
+        horizontalTextAlign: 40,
+        strokeWidth: 30,
+        strokePadding: 2
+      }
+    } 
+  },
   props: {
+    options: {
+      type: Object,
+      required: false
+    },
     value: {
       type: Number,
-      require: false,
+      required: false,
       default: 0
-    },
-    height: {
-      type: Number,
-      default: constants.height
-    },
-    width: {
-      type: Number,
-      default: constants.width
-    },
-    textColor: {
-      type: String,
-      default: constants.textColor,
-      require: false
-    },
-    textShadow: {
-      type: String,
-      default: constants.textShadow,
-      require: false
-    },
-    color: {
-      type: String,
-      default: constants.color,
-      require: false
-    },
-    backgroundColor: {
-      type: String,
-      default: constants.backgroundColor,
-      require: false
-    },
-    fontFamily: {
-      type: String,
-      require: false
-    },
-    fontSize: {
-      type: Number,
-      default: constants.fontSize,
-      require: false
-    },
-    verticalTextAlign: {
-      type: Number,
-      default: constants.verticalTextAlign,
-      require: false
-    },
-    horizontalTextAlign: {
-      type: Number,
-      default: constants.horizontalTextAlign,
-      require: false
-    },
-    strokeWidth: {
-      type: Number,
-      default: constants.strokeWidth,
-      require: false
-    },
-    strokePadding: {
-      type: Number,
-      default: constants.strokePadding,
-      require: false
-    },
-    dynamicProgressText: {
-      type: Boolean,
-      default: false,
-      require: false
+    }
+  },
+  name: 'ProgressBar',
+  data () {
+  	return {
+      defaultOptions: Object
+    }
+  },
+  mounted () {
+    if(this.options !== null || this.options !== undefined) {
+      this.mergeDefaultOptionsWithProp(this.options)
     }
   },
   computed: {
     verticalTextAlignP () {
-      return this.verticalTextAlign + '%'
+      return this.defaultOptions.layout.verticalTextAlign + '%'
     },
     horizontalTextAlignP () {
-      if (this.dynamicProgressText) {
+      if (this.defaultOptions.text.dynamicPosition) {
         let dynamicHorizontalTextAlign = 0
         if(this.value > 75) {
           dynamicHorizontalTextAlign = 75
@@ -131,27 +92,44 @@ export default {
         }
         return dynamicHorizontalTextAlign + '%'
       } else {
-        return this.horizontalTextAlign + '%'
+        return this.defaultOptions.layout.horizontalTextAlign + '%'
       }
     },
     progressValue () {
       return (100 - this.value) + '%'
     },
     progressWidth () {
-      return this.strokeWidth - this.strokePadding
+      return this.defaultOptions.layout.strokeWidth - this.defaultOptions.layout.strokePadding
     },
     lineStyle () {
       return {
-        height: px(this.height),
-        width: px(this.width),
-        fontFamily: this.fontFamily,
-        fontSize: px(this.fontSize)
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width),
+        fontFamily: this.defaultOptions.text.fontFamily,
+        fontSize: px(this.defaultOptions.text.fontSize)
       }
     },
     textStyle () {
       return {
-        fill: this.textColor,
-        textShadow: '1px 1px 1px ' + this.textShadow
+        fill: this.defaultOptions.text.color,
+        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 0
+      }
+    }
+  },
+  methods: {
+    mergeDefaultOptionsWithProp: function (options) {
+      var result = this.defaultOptions
+      for (var option in options)
+      {
+        if (options[option] !== null && typeof(options[option]) === 'object') {
+          for (var subOption in options[option]) {
+            if (options[option][subOption] !== undefined && options[option][subOption] !== null) {
+              result[option][subOption] = options[option][subOption]
+            }
+          }
+        } else {
+          result[option] = options[option]
+        }
       }
     }
   }

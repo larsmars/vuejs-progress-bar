@@ -43,7 +43,7 @@ Use: (in your local .vue file/component, html section)
 | backgroundColor      | String           | lightgray       | Background color |
 | width     | Number           | 120      | Width|
 | height      | Number           | 120       | Height |
-| fontFamily      | String           | n/a       | Font color of % text|
+| fontFamily      | String           | n/a       | Font family text|
 | fontSize     | String           | 14px       | Font size of % text|
 | horizontalTextAlign     | Number           | 40      | Positioning of % text horizontal |
 | verticalTextAlign      | Number           | 55       | Positioning of % text vertical |

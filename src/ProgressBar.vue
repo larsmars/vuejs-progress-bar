@@ -7,7 +7,7 @@
             y1="50%"
             x2="100%"
             y2="50%"
-            stroke-width="30" />
+            :stroke-width="strokeWidth" />
       </g>
       <g class="progress-content">
         <line
@@ -19,7 +19,7 @@
             :fill="'white'" 
             stroke-dasharray="100%"
             :stroke-dashoffset="progressValue"
-            stroke-width="28" />
+            :stroke-width="progressWidth" />
       </g>
       <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
     </svg>   
@@ -37,7 +37,9 @@ const constants = {
   delay: .4,
   fontSize: 14,
   verticalTextAlign: 55,
-  horizontalTextAlign: 40
+  horizontalTextAlign: 40,
+  strokeWidth: 30,
+  strokePadding: 2
 }
 
 const s = x => x + 's'
@@ -97,6 +99,21 @@ export default {
       type: Number,
       default: constants.horizontalTextAlign,
       require: false
+    },
+    strokeWidth: {
+      type: Number,
+      default: constants.strokeWidth,
+      require: false
+    },
+    strokePadding: {
+      type: Number,
+      default: constants.strokePadding,
+      require: false
+    },
+    dynamicProgressText: {
+      type: Boolean,
+      default: false,
+      require: false
     }
   },
   computed: {
@@ -104,10 +121,24 @@ export default {
       return this.verticalTextAlign + '%'
     },
     horizontalTextAlignP () {
-      return this.horizontalTextAlign + '%'
+      if (this.dynamicProgressText) {
+        let dynamicHorizontalTextAlign = 0
+        if(this.value > 75) {
+          dynamicHorizontalTextAlign = 75
+        } else {
+          dynamicHorizontalTextAlign = this.value 
+          dynamicHorizontalTextAlign += 2
+        }
+        return dynamicHorizontalTextAlign + '%'
+      } else {
+        return this.horizontalTextAlign + '%'
+      }
     },
     progressValue () {
       return (100 - this.value) + '%'
+    },
+    progressWidth () {
+      return this.strokeWidth - this.strokePadding
     },
     lineStyle () {
       return {

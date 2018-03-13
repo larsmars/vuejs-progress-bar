@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 Progressbar for vue.js
-
-NB! Beta 0.0.3, not ready for prod
+svg based
+NB! Beta 0.0.4, not ready for prod
 
 [Live demo](http://softwarefun.no/#/progressbar)
 

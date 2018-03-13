@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 ProgressBar for vue.js
 svg/vector based
-v0.0.6
+v0.0.7
 NB! Beta
 
 [Live demo](http://softwarefun.no/#/progressbar)
@@ -29,7 +29,7 @@ Use: (in your local .vue file/component, html section)
       />
 
 <!-- Options struct: -->
-options = {
+options: {
   text: {
     color: 'white',
     shadowEnable: true,

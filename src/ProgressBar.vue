@@ -112,7 +112,7 @@ export default {
     textStyle () {
       return {
         fill: this.defaultOptions.text.color,
-        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 0
+        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none'
       }
     }
   },

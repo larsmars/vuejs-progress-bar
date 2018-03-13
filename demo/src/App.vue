@@ -7,6 +7,9 @@
         :width="120"
         :backgroundColor="'lightgray'"
         :value="value"
+        :fontFamily="'Helvetica'"
+        :horizontalTextAlign="40"
+        :verticalTextAlign="53.5"
         />
       <br>
     </div>

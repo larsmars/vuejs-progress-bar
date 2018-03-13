@@ -1,8 +1,7 @@
 <template>
   <div class="progress-bar">
-    <svg id="line-progress" 
-      :height="height" 
-      :width="width">
+    <svg id="line-progress"
+      :style="lineStyle">
       <g class="progress-container" :stroke="backgroundColor">
         <line x1="0"
             y1="50%"
@@ -17,12 +16,12 @@
             x2="100%"
             y2="50%"
             :stroke="color" 
-            :fill="textColor" 
+            :fill="'white'" 
             stroke-dasharray="100%"
             :stroke-dashoffset="progressValue"
             stroke-width="28" />
       </g>
-      <text class="percentage" x="40%" y="55%">{{value}}%</text>
+      <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
     </svg>   
     </div>
 </template>
@@ -30,12 +29,17 @@
 <script>
 const constants = {
   textColor: 'white',
+  textShadow: 'black',
   color: 'green',
   backgroundColor: 'lightgray',
   height: 120,
   width: 120,
-  delay: .4
+  delay: .4,
+  fontSize: 14,
+  verticalTextAlign: 55,
+  horizontalTextAlign: 40
 }
+
 const s = x => x + 's'
 const px = v => v + 'px'
 
@@ -57,7 +61,12 @@ export default {
     },
     textColor: {
       type: String,
-      default: constants.color,
+      default: constants.textColor,
+      require: false
+    },
+    textShadow: {
+      type: String,
+      default: constants.textShadow,
       require: false
     },
     color: {
@@ -73,11 +82,46 @@ export default {
     fontFamily: {
       type: String,
       require: false
+    },
+    fontSize: {
+      type: Number,
+      default: constants.fontSize,
+      require: false
+    },
+    verticalTextAlign: {
+      type: Number,
+      default: constants.verticalTextAlign,
+      require: false
+    },
+    horizontalTextAlign: {
+      type: Number,
+      default: constants.horizontalTextAlign,
+      require: false
     }
   },
   computed: {
+    verticalTextAlignP () {
+      return this.verticalTextAlign + '%'
+    },
+    horizontalTextAlignP () {
+      return this.horizontalTextAlign + '%'
+    },
     progressValue () {
-      return 100 - this.value + '%'
+      return (100 - this.value) + '%'
+    },
+    lineStyle () {
+      return {
+        height: px(this.height),
+        width: px(this.width),
+        fontFamily: this.fontFamily,
+        fontSize: px(this.fontSize)
+      }
+    },
+    textStyle () {
+      return {
+        fill: this.textColor,
+        textShadow: '1px 1px 1px ' + this.textShadow
+      }
     }
   }
 }
@@ -96,16 +140,10 @@ export default {
     }
   }
   .progress-content{
-    stroke: darken(#C2E362,5%);
     stroke-width: 2px;
-    fill: #C2E362;
     .top{
       z-index:1;
     }
-  }
-  .percentage{
-    fill: #F8F9F9;
-    text-shadow: 1px 1px 1px black;
   }
 }
 

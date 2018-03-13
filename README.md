@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 Progressbar for vue.js
 
-NB! Beta 0.0.2, not ready for prod
+NB! Beta 0.0.3, not ready for prod
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
@@ -22,11 +22,14 @@ Vue.use(ProgressBar)
 Use: (in your local .vue file/component, html section)
 
 ```xml
-  <progress-bar
-    :width="120"
-    :backgroundColor="'lightgray'"
-    :value="value"
-    />
+    <progress-bar
+      :width="120"
+      :backgroundColor="'lightgray'"
+      :value="value"
+      :fontFamily="'Helvetica'"
+      :horizontalTextAlign="40"
+      :verticalTextAlign="53.5"
+      />
 ```
 
 ### Properties
@@ -35,8 +38,13 @@ Use: (in your local .vue file/component, html section)
 | ---       | ---               | ---         | ---                                |
 | value     | Number           | 0      | Value of progressbar %|
 | textColor      | String           | white       | Text color |
+| textShadow      | String           | black       | Text shadow |
 | color     | String           | green      | Progress color|
 | backgroundColor      | String           | lightgray       | Background color |
 | width     | Number           | 120      | Width|
 | height      | Number           | 120       | Height |
+| fontFamily      | String           | n/a       | Font color of % text|
+| fontSize     | String           | 14px       | Font size of % text|
+| horizontalTextAlign     | Number           | 40      | Positioning of % text horizontal |
+| verticalTextAlign      | Number           | 55       | Positioning of % text vertical |
 

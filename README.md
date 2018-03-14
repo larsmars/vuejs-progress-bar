@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 ProgressBar for vue.js
 svg/vector based
-v0.0.7
+v0.0.8
 NB! Beta
 
 [Live demo](http://softwarefun.no/#/progressbar)
@@ -31,16 +31,16 @@ Use: (in your local .vue file/component, html section)
 <!-- Options struct: -->
 options: {
   text: {
-    color: 'white',
+    color: '#FFFFFF',
     shadowEnable: true,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     fontSize: 14,
     fontFamily: 'Helvetica',
     dynamicPosition: false
   },
   progress: {
-    color: 'green',
-    backgroundColor: 'lightgray'
+    color: '#2dbd2d',
+    backgroundColor: '#C0C0C0'
   },
   layout: {
     height: 120,
@@ -48,7 +48,8 @@ options: {
     verticalTextAlign: 55,
     horizontalTextAlign: 40,
     strokeWidth: 30,
-    strokePadding: 2
+    strokePadding: 2,
+    type: 'line'
   }
 }
 ```
@@ -58,17 +59,18 @@ options: {
 | Name      | Type              | Default     | Description                        |
 | ---       | ---               | ---         | ---                                |
 | value           | Number           | 0      | Value of progressbar % |
-| textColor       | String           | white        | Text color |
-| shadowEnable      | String           | black        | Text shadow enable |
-| shadowColor      | String           | black        | Text shadow color |
-| fontFamily      | String           | n/a          | Font family text |
+| textColor       | String           | #FFFFFF      | Text color |
+| shadowEnable    | String           | true       | Text shadow enable |
+| shadowColor     | String           | #000000     | Text shadow color |
+| fontFamily      | String           | Helvetica    | Font family text |
 | fontSize        | String           | 14px         | Font size of % text |
-| dynamicPosition     | Boolean                 | false     | Progress text % follow progress bar |
-| color           | String           | green        | Progress color|
-| backgroundColor | String           | lightgray    | Background color |
+| dynamicPosition | Boolean          | false        | Progress text % follow progress bar |
+| color           | String           | green        | Progress color, use hex or rgb |
+| backgroundColor | String           | lightgray    | Background color, use hex or rgb |
 | width           | Number           | 120          | Width outer boundaries |
 | height          | Number           | 120          | Height outer boundaries, use strok for progress height |
-| horizontalTextAlign    | Number           | 40    | Positioning of % text horizontal |
-| verticalTextAlign      | Number           | 55    | Positioning of % text vertical |
+| horizontalTextAlign    | Number    | 40           | Positioning of % text horizontal |
+| verticalTextAlign      | Number    | 55           | Positioning of % text vertical |
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | strokePadding   | Number           | 2            | Padding between background and progress bar => gives progress width |
+| type            | String           | line         | type of progress bar, line or cylinder |

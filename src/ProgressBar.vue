@@ -1,28 +1,46 @@
 <template>
   <div class="progress-bar">
-    <svg id="line-progress"
+    <svg v-if="cylinder" id="cylinder-progress" 
+      width="150px" 
+      height="120px">
+      <g class="progress-container" :stroke="cylinderBackgroundStroke" :fill="defaultOptions.progress.backgroundColor">
+        <rect x="0" y="20" width="100%" height="80"></rect>
+        <ellipse cx="75" cy="20" rx="50%" ry="15" class="top"></ellipse>
+        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      </g>
+      <g class="progress-content" :stroke="cylinderColorStroke" :fill="cylinderProgressColor">
+        <rect x="0" :y="rectY" width="100%" :height="rectHeight"></rect>
+        <ellipse cx="75" :cy="topCy" rx="50%" ry="15" class="top"></ellipse>
+        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      </g>
+      <g class="progress-container">
+        <ellipse :stroke="cylinderBackgroundStroke" cx="75" cy="20" rx="50%" ry="15" class="top" fill="none"></ellipse>
+      </g>
+      <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
+    </svg> 
+    <svg v-if="line" id="line-progress"
       :style="lineStyle">
       <g class="progress-container" :stroke="defaultOptions.progress.backgroundColor">
         <line x1="0"
-            y1="50%"
-            x2="100%"
-            y2="50%"
-            :stroke-width="defaultOptions.layout.strokeWidth" />
+          y1="50%"
+          x2="100%"
+          y2="50%"
+          :stroke-width="defaultOptions.layout.strokeWidth" />
       </g>
       <g class="progress-content">
         <line
-            x1="0"
-            y1="50%"
-            x2="100%"
-            y2="50%"
-            :stroke="defaultOptions.progress.color" 
-            :fill="'white'" 
-            stroke-dasharray="100%"
-            :stroke-dashoffset="progressValue"
-            :stroke-width="progressWidth" />
+          x1="0"
+          y1="50%"
+          x2="100%"
+          y2="50%"
+          :stroke="defaultOptions.progress.color" 
+          :fill="'white'" 
+          stroke-dasharray="100%"
+          :stroke-dashoffset="progressValue"
+          :stroke-width="progressWidth" />
       </g>
       <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
-    </svg>   
+    </svg>
     </div>
 </template>
 
@@ -34,24 +52,25 @@ export default {
   created () {
     this.defaultOptions = {
       text: {
-        color: 'white',
+        color: '#FFFFFF',
         shadowEnable: true,
-        shadowColor: 'black',
+        shadowColor: '#000000',
         fontSize: 14,
         fontFamily: 'Helvetica',
         dynamicPosition: false
       },
       progress: {
-        color: 'green',
-        backgroundColor: 'lightgray'
+        color: '#2dbd2d',
+        backgroundColor: '#C0C0C0',
       },
       layout: {
         height: 120,
         width: 120,
         verticalTextAlign: 55,
-        horizontalTextAlign: 40,
+        horizontalTextAlign: 43,
         strokeWidth: 30,
-        strokePadding: 2
+        strokePadding: 2,
+        type: 'line'
       }
     } 
   },
@@ -69,7 +88,10 @@ export default {
   name: 'ProgressBar',
   data () {
   	return {
-      defaultOptions: Object
+      defaultOptions: Object,
+      rectHeight: 0,
+      rectY: 90,
+      topCy: -20,
     }
   },
   mounted () {
@@ -78,6 +100,12 @@ export default {
     }
   },
   computed: {
+    cylinder () {
+      return this.defaultOptions.layout.type === 'cylinder'
+    },
+    line () {
+      return this.defaultOptions.layout.type === 'line'
+    },
     verticalTextAlignP () {
       return this.defaultOptions.layout.verticalTextAlign + '%'
     },
@@ -94,6 +122,26 @@ export default {
       } else {
         return this.defaultOptions.layout.horizontalTextAlign + '%'
       }
+    },
+    cylinderProgressColor () {
+      if (this.value === 0) {
+        return this.defaultOptions.progress.backgroundColor
+      } else {
+        return this.defaultOptions.progress.color
+      }
+    },
+    cylinderBackgroundColor () {
+      if (this.value === 100) {
+        return this.defaultOptions.progress.color
+      } else {
+        return this.defaultOptions.progress.backgroundColor
+      }
+    },
+    cylinderBackgroundStroke () {
+        return this.LightenColor(this.cylinderBackgroundColor, 25);
+    },
+    cylinderColorStroke () {
+        return this.LightenColor(this.cylinderProgressColor, 5);
     },
     progressValue () {
       return (100 - this.value) + '%'
@@ -116,6 +164,17 @@ export default {
       }
     }
   },
+  watch: {
+    value: function (val) {
+      let invertedVal = 100 - val;
+      if (this.cylinder) {
+        this.rectHeight = (80 - (invertedVal*.8));
+        this.rectY = (invertedVal*.8)+20;
+        this.topCy = ((-invertedVal*-.8)+20);
+        this.cylText =  (100-(invertedVal)+"%");
+      }
+    }
+  },
   methods: {
     mergeDefaultOptionsWithProp: function (options) {
       var result = this.defaultOptions
@@ -131,6 +190,32 @@ export default {
           result[option] = options[option]
         }
       }
+    },
+    LightenColor: function (color, level) {
+    var usePound = false;
+    if (color[0] == "#") {
+        color = color.slice(1);
+        usePound = true;
+    }
+ 
+    var num = parseInt(color,16);
+    var r = (num >> 16) + level;
+
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+ 
+    var b = ((num >> 8) & 0x00FF) + level;
+ 
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+ 
+    var g = (num & 0x0000FF) + level;
+ 
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+ 
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+  
     }
   }
 }
@@ -139,18 +224,19 @@ export default {
 
 <style lang="scss" scoped>
 
-.progress-bar{
+.progress-bar {
   display: inline-block;
   align-content: stretch;
-  .progress-container{
+
+  .progress-container {
     stroke-width: 2px;
-    .top{
-      z-index:2;
+    .top {
+      z-index: 2;
     }
   }
-  .progress-content{
+  .progress-content {
     stroke-width: 2px;
-    .top{
+    .top {
       z-index:1;
     }
   }

@@ -152,14 +152,14 @@ export default {
     lineStyle () {
       return {
         height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width),
-        fontFamily: this.defaultOptions.text.fontFamily,
-        fontSize: px(this.defaultOptions.text.fontSize)
+        width: px(this.defaultOptions.layout.width)
       }
     },
     textStyle () {
       return {
         fill: this.defaultOptions.text.color,
+        fontFamily: this.defaultOptions.text.fontFamily,
+        fontSize: px(this.defaultOptions.text.fontSize),
         textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none'
       }
     }

@@ -4,13 +4,9 @@
       <img src="./assets/logo.png">
       <h2>Demo VueJS ProgressBar</h2>
       <progress-bar
-        :width="120"
-        :backgroundColor="'lightgray'"
+        :options="options"
         :value="value"
-        :fontFamily="'Helvetica'"
-        :horizontalTextAlign="40"
-        :verticalTextAlign="53.5"
-        />
+      />
       <br>
     </div>
   </div>
@@ -19,16 +15,40 @@
 <script>
 export default {
   mounted () {
+    this.value = 100
     this.intervalid1 = setInterval(() => {
         this.changes = Math.floor((Math.random() * 100));
         this.value = this.changes
         console.log('Value demo: ' + this.value)
-    }, 4000);
+    }, 500);
   },
   name: 'App',
   data () {
     return {
-      value: 3
+      value: 0,
+      options: {
+      text: {
+          color: 'white',
+          shadowEnable: true,
+          shadowColor: 'black',
+          fontSize: 14,
+          fontFamily: 'Helvetica',
+          dynamicPosition: false
+        },
+        progress: {
+          color: '#C2E362',
+          backgroundColor: '#392F32'
+        },
+        layout: {
+          height: 120,
+          width: 120,
+          verticalTextAlign: 55,
+          horizontalTextAlign: 43,
+          strokeWidth: 30,
+          strokePadding: 2,
+          type: 'cylinder'
+        }
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ NB! Beta
 
 > Only 1 dependency (vue)
 
-<img src="http://softwarefun.no/static/demo_progress_bar.png" height="250">
+<img src="http://softwarefun.no/static/demo_progress_bar.png" height="260">
 
 ## Setup
 install:

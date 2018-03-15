@@ -1,5 +1,12 @@
 <template>
-  <div class="progress-bar">
+  <div v-if="circle" class="progress-bar">
+    <div :style="textStyleCircle" id="cont">
+      {{value+'%'}}
+    </div>
+      <svg :width="width" :height="height" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.backgroundColor" :stroke-width="defaultOptions.layout.strokeWidth" />
+          <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.color" :stroke-width="defaultOptions.layout.strokeWidth" :stroke-dasharray="strokeCircle" :stroke-dashoffset="strokeCircleOffset" />
+      </svg>
     <svg v-if="cylinder" id="cylinder-progress" 
       width="150px" 
       height="120px">
@@ -92,6 +99,9 @@ export default {
       rectHeight: 0,
       rectY: 90,
       topCy: -20,
+      radiusCircle: 54,
+      strokeCircle: 0,
+      strokeCircleOffset: 0
     }
   },
   mounted () {
@@ -105,6 +115,18 @@ export default {
     },
     line () {
       return this.defaultOptions.layout.type === 'line'
+    },
+    circle () {
+      return this.defaultOptions.layout.type === 'circle'
+    },
+    width () {
+      return this.defaultOptions.layout.width
+    },
+    height () {
+      return this.defaultOptions.layout.height
+    },
+    viewBoxCircle () {
+      return '0 0' + ' ' + this.height + ' ' + this.width
     },
     verticalTextAlignP () {
       return this.defaultOptions.layout.verticalTextAlign + '%'
@@ -162,6 +184,17 @@ export default {
         fontFamily: this.defaultOptions.text.fontFamily,
         textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none'
       }
+    },
+    textStyleCircle () {
+      return {
+        fill: this.defaultOptions.text.color,
+        fontSize: px(this.defaultOptions.text.fontSize),
+        fontFamily: this.defaultOptions.text.fontFamily,
+        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none',
+        top: px(this.defaultOptions.layout.verticalTextAlign),
+        left: px(this.defaultOptions.layout.horizontalTextAlign),
+        position: 'relative'
+      }
     }
   },
   watch: {
@@ -172,6 +205,9 @@ export default {
         this.rectY = (invertedVal*.8)+20;
         this.topCy = ((-invertedVal*-.8)+20);
         this.cylText =  (100-(invertedVal)+"%");
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle
+        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
       }
     }
   },

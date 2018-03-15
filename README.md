@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 ProgressBar for vue.js
 svg/vector based
-v0.0.10
+v0.0.11
 NB! Beta
 
 [Live demo](http://softwarefun.no/#/progressbar)
@@ -75,4 +75,4 @@ options: {
 | horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | strokePadding   | Number           | 2            | Padding between background and progress bar => gives progress width |
-| type            | String           | line         | type of progress bar, line or cylinder |
+| type            | String           | line         | type of progress bar, line, circle or cylinder |

@@ -1,12 +1,12 @@
 <template>
-  <div v-if="circle" class="progress-bar">
-    <div :style="textStyleCircle" id="cont">
+  <div class="progress-bar">
+    <div v-if="circle" :style="textStyleCircle" id="cont">
       {{value+'%'}}
     </div>
-      <svg :width="width" :height="height" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.backgroundColor" :stroke-width="defaultOptions.layout.strokeWidth" />
-          <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.color" :stroke-width="defaultOptions.layout.strokeWidth" :stroke-dasharray="strokeCircle" :stroke-dashoffset="strokeCircleOffset" />
-      </svg>
+    <svg v-if="circle" :width="width" :height="height" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.backgroundColor" :stroke-width="defaultOptions.layout.strokeWidth" />
+        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.color" :stroke-width="defaultOptions.layout.strokeWidth" :stroke-dasharray="strokeCircle" :stroke-dashoffset="strokeCircleOffset" />
+    </svg>
     <svg v-if="cylinder" id="cylinder-progress" 
       width="150px" 
       height="120px">
@@ -187,7 +187,7 @@ export default {
     },
     textStyleCircle () {
       return {
-        fill: this.defaultOptions.text.color,
+        color: this.defaultOptions.text.color,
         fontSize: px(this.defaultOptions.text.fontSize),
         fontFamily: this.defaultOptions.text.fontFamily,
         textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none',

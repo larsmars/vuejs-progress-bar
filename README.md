@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 ProgressBar for vue.js
 svg/vector based
-v0.0.11
+v0.0.12
 NB! Beta
 
 [Live demo](http://softwarefun.no/#/progressbar)

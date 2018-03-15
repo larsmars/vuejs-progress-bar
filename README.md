@@ -6,6 +6,8 @@ NB! Beta
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
+<img src="http://softwarefun.no/static/demo_progress_bar.png" height="260">
+
 > Only 1 dependency (vue)
 
 ## Setup

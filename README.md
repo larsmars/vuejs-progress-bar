@@ -7,9 +7,9 @@ v0.0.12
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
-> Only 1 dependency (vue)
+<img src="http://softwarefun.no/static/demo_progress_barV2.png" height="260">
 
-<img src="http://softwarefun.no/static/demo_progress_bar.png" height="250">
+> Only 1 dependency (vue)
 
 Do you have questions or want a new feature? Use the "Issues" section :point_left:
 

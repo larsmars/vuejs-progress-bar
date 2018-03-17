@@ -105,7 +105,7 @@ export default {
     }
   },
   mounted () {
-    if(this.options !== null || this.options !== undefined) {
+    if(this.options !== null && this.options !== undefined) {
       this.mergeDefaultOptionsWithProp(this.options)
     }
   },

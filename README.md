@@ -2,13 +2,16 @@
 ProgressBar for vue.js
 svg/vector based
 v0.0.12
-NB! Beta
+
+<img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
 > Only 1 dependency (vue)
 
 <img src="http://softwarefun.no/static/demo_progress_bar.png" height="250">
+
+Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
 ## Setup
 install:

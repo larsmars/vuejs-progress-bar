@@ -1,11 +1,18 @@
 # vuejs-progress-bar
-Progressbar for vue.js
+ProgressBar for vue.js <br>
+SVG/Vector based <br>
+3 modes: Line, Circle and Cylinder <br>
+v0.0.12
 
-NB! Beta 0.0.3, not ready for prod
+<img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
+
+> Only 1 dependency (vue)
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
-> Only 1 dependency (vue)
+<img src="http://softwarefun.no/static/demo_progress_barV2.png" height="260">
+
+Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
 ## Setup
 install:
@@ -23,28 +30,53 @@ Use: (in your local .vue file/component, html section)
 
 ```xml
     <progress-bar
-      :width="120"
-      :backgroundColor="'lightgray'"
+      :options="options"
       :value="value"
-      :fontFamily="'Helvetica'"
-      :horizontalTextAlign="40"
-      :verticalTextAlign="53.5"
       />
+
+<!-- Options struct: -->
+options: {
+  text: {
+    color: '#FFFFFF',
+    shadowEnable: true,
+    shadowColor: '#000000',
+    fontSize: 14,
+    fontFamily: 'Helvetica',
+    dynamicPosition: false
+  },
+  progress: {
+    color: '#2dbd2d',
+    backgroundColor: '#C0C0C0'
+  },
+  layout: {
+    width: 120,
+    height: 120,
+    verticalTextAlign: 55,
+    horizontalTextAlign: 43,
+    strokeWidth: 30,
+    strokePadding: 2,
+    type: 'line'
+  }
+}
 ```
 
 ### Properties
 
 | Name      | Type              | Default     | Description                        |
 | ---       | ---               | ---         | ---                                |
-| value     | Number           | 0      | Value of progressbar %|
-| textColor      | String           | white       | Text color |
-| textShadow      | String           | black       | Text shadow |
-| color     | String           | green      | Progress color|
-| backgroundColor      | String           | lightgray       | Background color |
-| width     | Number           | 120      | Width|
-| height      | Number           | 120       | Height |
-| fontFamily      | String           | n/a       | Font color of % text|
-| fontSize     | String           | 14px       | Font size of % text|
-| horizontalTextAlign     | Number           | 40      | Positioning of % text horizontal |
-| verticalTextAlign      | Number           | 55       | Positioning of % text vertical |
-
+| value           | Number           | 0            | Value of progressbar % |
+| color           | String           | #FFFFFF      | Text color |
+| shadowEnable    | String           | true         | Text shadow enable |
+| shadowColor     | String           | #000000      | Text shadow color |
+| fontSize        | String           | 14px         | Font size of % text |
+| fontFamily      | String           | Helvetica    | Font family text |
+| dynamicPosition | Boolean          | false        | Progress text % follow progress bar |
+| color           | String           | #2dbd2d      | Progress color, use hex or rgb |
+| backgroundColor | String           | #C0C0C0      | Background color, use hex or rgb |
+| width           | Number           | 120          | Width outer boundaries |
+| height          | Number           | 120          | Height outer boundaries, use strok for progress height |
+| verticalTextAlign      | Number    | 55           | Positioning of % text vertical |
+| horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
+| strokeWidth     | Number           | 30           | Width of background of progress |
+| strokePadding   | Number           | 2            | Padding between background and progress bar => gives progress width |
+| type            | String           | line         | type of progress bar, line, circle or cylinder |

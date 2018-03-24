@@ -1,127 +1,257 @@
 <template>
   <div class="progress-bar">
-    <svg id="line-progress"
+    <div v-if="circle" :style="textStyleCircle" id="cont">
+      {{value+'%'}}
+    </div>
+    <svg v-if="circle" :width="width" :height="height" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.backgroundColor" :stroke-width="defaultOptions.layout.strokeWidth" />
+        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.color" :stroke-width="defaultOptions.layout.strokeWidth" :stroke-dasharray="strokeCircle" :stroke-dashoffset="strokeCircleOffset" />
+    </svg>
+    <svg v-if="cylinder" id="cylinder-progress" 
+      width="150px" 
+      height="120px">
+      <g class="progress-container" :stroke="cylinderBackgroundStroke" :fill="defaultOptions.progress.backgroundColor">
+        <rect x="0" y="20" width="100%" height="80"></rect>
+        <ellipse cx="75" cy="20" rx="50%" ry="15" class="top"></ellipse>
+        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      </g>
+      <g class="progress-content" :stroke="cylinderColorStroke" :fill="cylinderProgressColor">
+        <rect x="0" :y="rectY" width="100%" :height="rectHeight"></rect>
+        <ellipse cx="75" :cy="topCy" rx="50%" ry="15" class="top"></ellipse>
+        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      </g>
+      <g class="progress-container">
+        <ellipse :stroke="cylinderBackgroundStroke" cx="75" cy="20" rx="50%" ry="15" class="top" fill="none"></ellipse>
+      </g>
+      <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
+    </svg> 
+    <svg v-if="line" id="line-progress"
       :style="lineStyle">
-      <g class="progress-container" :stroke="backgroundColor">
+      <g class="progress-container" :stroke="defaultOptions.progress.backgroundColor">
         <line x1="0"
-            y1="50%"
-            x2="100%"
-            y2="50%"
-            stroke-width="30" />
+          y1="50%"
+          x2="100%"
+          y2="50%"
+          :stroke-width="defaultOptions.layout.strokeWidth" />
       </g>
       <g class="progress-content">
         <line
-            x1="0"
-            y1="50%"
-            x2="100%"
-            y2="50%"
-            :stroke="color" 
-            :fill="'white'" 
-            stroke-dasharray="100%"
-            :stroke-dashoffset="progressValue"
-            stroke-width="28" />
+          x1="0"
+          y1="50%"
+          x2="100%"
+          y2="50%"
+          :stroke="defaultOptions.progress.color" 
+          :fill="'white'" 
+          stroke-dasharray="100%"
+          :stroke-dashoffset="progressValue"
+          :stroke-width="progressWidth" />
       </g>
       <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
-    </svg>   
+    </svg>
     </div>
 </template>
 
 <script>
-const constants = {
-  textColor: 'white',
-  textShadow: 'black',
-  color: 'green',
-  backgroundColor: 'lightgray',
-  height: 120,
-  width: 120,
-  delay: .4,
-  fontSize: 14,
-  verticalTextAlign: 55,
-  horizontalTextAlign: 40
-}
-
 const s = x => x + 's'
 const px = v => v + 'px'
 
 export default {
-  name: 'ProgressBar',
+  created () {
+    this.defaultOptions = {
+      text: {
+        color: '#FFFFFF',
+        shadowEnable: true,
+        shadowColor: '#000000',
+        fontSize: 14,
+        fontFamily: 'Helvetica',
+        dynamicPosition: false
+      },
+      progress: {
+        color: '#2dbd2d',
+        backgroundColor: '#C0C0C0',
+      },
+      layout: {
+        height: 120,
+        width: 120,
+        verticalTextAlign: 55,
+        horizontalTextAlign: 43,
+        strokeWidth: 30,
+        strokePadding: 2,
+        type: 'line'
+      }
+    } 
+  },
   props: {
+    options: {
+      type: Object,
+      required: false
+    },
     value: {
       type: Number,
-      require: false,
+      required: false,
       default: 0
-    },
-    height: {
-      type: Number,
-      default: constants.height
-    },
-    width: {
-      type: Number,
-      default: constants.width
-    },
-    textColor: {
-      type: String,
-      default: constants.textColor,
-      require: false
-    },
-    textShadow: {
-      type: String,
-      default: constants.textShadow,
-      require: false
-    },
-    color: {
-      type: String,
-      default: constants.color,
-      require: false
-    },
-    backgroundColor: {
-      type: String,
-      default: constants.backgroundColor,
-      require: false
-    },
-    fontFamily: {
-      type: String,
-      require: false
-    },
-    fontSize: {
-      type: Number,
-      default: constants.fontSize,
-      require: false
-    },
-    verticalTextAlign: {
-      type: Number,
-      default: constants.verticalTextAlign,
-      require: false
-    },
-    horizontalTextAlign: {
-      type: Number,
-      default: constants.horizontalTextAlign,
-      require: false
+    }
+  },
+  name: 'ProgressBar',
+  data () {
+  	return {
+      defaultOptions: Object,
+      rectHeight: 0,
+      rectY: 90,
+      topCy: -20,
+      radiusCircle: 54,
+      strokeCircle: 0,
+      strokeCircleOffset: 0
+    }
+  },
+  mounted () {
+    if(this.options !== null && this.options !== undefined) {
+      this.mergeDefaultOptionsWithProp(this.options)
     }
   },
   computed: {
+    cylinder () {
+      return this.defaultOptions.layout.type === 'cylinder'
+    },
+    line () {
+      return this.defaultOptions.layout.type === 'line'
+    },
+    circle () {
+      return this.defaultOptions.layout.type === 'circle'
+    },
+    width () {
+      return this.defaultOptions.layout.width
+    },
+    height () {
+      return this.defaultOptions.layout.height
+    },
+    viewBoxCircle () {
+      return '0 0' + ' ' + this.height + ' ' + this.width
+    },
     verticalTextAlignP () {
-      return this.verticalTextAlign + '%'
+      return this.defaultOptions.layout.verticalTextAlign + '%'
     },
     horizontalTextAlignP () {
-      return this.horizontalTextAlign + '%'
+      if (this.defaultOptions.text.dynamicPosition) {
+        let dynamicHorizontalTextAlign = 0
+        if(this.value > 75) {
+          dynamicHorizontalTextAlign = 75
+        } else {
+          dynamicHorizontalTextAlign = this.value 
+          dynamicHorizontalTextAlign += 2
+        }
+        return dynamicHorizontalTextAlign + '%'
+      } else {
+        return this.defaultOptions.layout.horizontalTextAlign + '%'
+      }
+    },
+    cylinderProgressColor () {
+      if (this.value === 0) {
+        return this.defaultOptions.progress.backgroundColor
+      } else {
+        return this.defaultOptions.progress.color
+      }
+    },
+    cylinderBackgroundColor () {
+      if (this.value === 100) {
+        return this.defaultOptions.progress.color
+      } else {
+        return this.defaultOptions.progress.backgroundColor
+      }
+    },
+    cylinderBackgroundStroke () {
+        return this.LightenColor(this.cylinderBackgroundColor, 25);
+    },
+    cylinderColorStroke () {
+        return this.LightenColor(this.cylinderProgressColor, 5);
     },
     progressValue () {
       return (100 - this.value) + '%'
     },
+    progressWidth () {
+      return this.defaultOptions.layout.strokeWidth - this.defaultOptions.layout.strokePadding
+    },
     lineStyle () {
       return {
-        height: px(this.height),
-        width: px(this.width),
-        fontFamily: this.fontFamily,
-        fontSize: px(this.fontSize)
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width)
       }
     },
     textStyle () {
       return {
-        fill: this.textColor,
-        textShadow: '1px 1px 1px ' + this.textShadow
+        fill: this.defaultOptions.text.color,
+        fontSize: px(this.defaultOptions.text.fontSize),
+        fontFamily: this.defaultOptions.text.fontFamily,
+        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none'
       }
+    },
+    textStyleCircle () {
+      return {
+        color: this.defaultOptions.text.color,
+        fontSize: px(this.defaultOptions.text.fontSize),
+        fontFamily: this.defaultOptions.text.fontFamily,
+        textShadow: this.defaultOptions.text.shadowEnable ? '1px 1px 1px ' + this.defaultOptions.text.shadowColor : 'none',
+        top: px(this.defaultOptions.layout.verticalTextAlign),
+        left: px(this.defaultOptions.layout.horizontalTextAlign),
+        position: 'relative'
+      }
+    }
+  },
+  watch: {
+    value: function (val) {
+      let invertedVal = 100 - val;
+      if (this.cylinder) {
+        this.rectHeight = (80 - (invertedVal*.8));
+        this.rectY = (invertedVal*.8)+20;
+        this.topCy = ((-invertedVal*-.8)+20);
+        this.cylText =  (100-(invertedVal)+"%");
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle
+        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
+      }
+    }
+  },
+  methods: {
+    mergeDefaultOptionsWithProp: function (options) {
+      var result = this.defaultOptions
+      for (var option in options)
+      {
+        if (options[option] !== null && typeof(options[option]) === 'object') {
+          for (var subOption in options[option]) {
+            if (options[option][subOption] !== undefined && options[option][subOption] !== null) {
+              result[option][subOption] = options[option][subOption]
+            }
+          }
+        } else {
+          result[option] = options[option]
+        }
+      }
+    },
+    LightenColor: function (color, level) {
+    var usePound = false;
+    if (color[0] == "#") {
+        color = color.slice(1);
+        usePound = true;
+    }
+ 
+    var num = parseInt(color,16);
+    var r = (num >> 16) + level;
+
+    if (r > 255) r = 255;
+    else if  (r < 0) r = 0;
+ 
+    var b = ((num >> 8) & 0x00FF) + level;
+ 
+    if (b > 255) b = 255;
+    else if  (b < 0) b = 0;
+ 
+    var g = (num & 0x0000FF) + level;
+ 
+    if (g > 255) g = 255;
+    else if (g < 0) g = 0;
+ 
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+  
     }
   }
 }
@@ -130,18 +260,19 @@ export default {
 
 <style lang="scss" scoped>
 
-.progress-bar{
+.progress-bar {
   display: inline-block;
   align-content: stretch;
-  .progress-container{
+
+  .progress-container {
     stroke-width: 2px;
-    .top{
-      z-index:2;
+    .top {
+      z-index: 2;
     }
   }
-  .progress-content{
+  .progress-content {
     stroke-width: 2px;
-    .top{
+    .top {
       z-index:1;
     }
   }

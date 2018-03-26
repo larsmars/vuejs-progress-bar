@@ -80,5 +80,5 @@ options: {
 | verticalTextAlign      | Number    | 61           | Positioning of % text vertical |
 | horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
 | strokeWidth     | Number           | 30           | Width of background of progress |
-| progressPadding | Number           | 0            | Padding between background and progress bar (height) |
+| progressPadding | Number           | 0            | Padding between background and progress bar (line only) |
 | type            | String           | line         | type of progress bar, line, circle or cylinder |

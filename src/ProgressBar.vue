@@ -66,9 +66,9 @@ export default {
         backgroundColor: '#C0C0C0',
       },
       layout: {
-        height: 120,
-        width: 120,
-        verticalTextAlign: 55,
+        height: 35,
+        width: 140,
+        verticalTextAlign: 61,
         horizontalTextAlign: 43,
         strokeWidth: 30,
         progressPadding: 0,

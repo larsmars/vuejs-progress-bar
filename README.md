@@ -2,7 +2,7 @@
 ProgressBar for vue.js <br>
 SVG/Vector based <br>
 3 modes: Line, Circle and Cylinder <br>
-v0.0.13
+v1.0.0
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
@@ -75,9 +75,9 @@ options: {
 | dynamicPosition | Boolean          | false        | Progress text % follow progress bar |
 | color           | String           | #2dbd2d      | Progress color, use hex or rgb |
 | backgroundColor | String           | #C0C0C0      | Background color, use hex or rgb |
-| width           | Number           | 120          | Width |
-| height          | Number           | 120          | Height, use strok for progress height |
-| verticalTextAlign      | Number    | 55           | Positioning of % text vertical |
+| width           | Number           | 140          | Width |
+| height          | Number           | 35          | Height, use strok for progress height |
+| verticalTextAlign      | Number    | 61           | Positioning of % text vertical |
 | horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | progressPadding | Number           | 0            | Padding between background and progress bar (height) |

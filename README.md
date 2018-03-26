@@ -2,11 +2,11 @@
 ProgressBar for vue.js <br>
 SVG/Vector based <br>
 3 modes: Line, Circle and Cylinder <br>
-v0.0.12
+v0.0.13
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
-> Only 1 dependency (vue)
+> 0 dependencies
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
@@ -42,7 +42,8 @@ options: {
     shadowColor: '#000000',
     fontSize: 14,
     fontFamily: 'Helvetica',
-    dynamicPosition: false
+    dynamicPosition: false,
+    hideText: false
   },
   progress: {
     color: '#2dbd2d',
@@ -54,7 +55,7 @@ options: {
     verticalTextAlign: 55,
     horizontalTextAlign: 43,
     strokeWidth: 30,
-    strokePadding: 2,
+    progressPadding: 2,
     type: 'line'
   }
 }
@@ -68,15 +69,16 @@ options: {
 | color           | String           | #FFFFFF      | Text color |
 | shadowEnable    | String           | true         | Text shadow enable |
 | shadowColor     | String           | #000000      | Text shadow color |
+| hideText        | Boolean          | false        | Hide text (%) |
 | fontSize        | String           | 14px         | Font size of % text |
 | fontFamily      | String           | Helvetica    | Font family text |
 | dynamicPosition | Boolean          | false        | Progress text % follow progress bar |
 | color           | String           | #2dbd2d      | Progress color, use hex or rgb |
 | backgroundColor | String           | #C0C0C0      | Background color, use hex or rgb |
-| width           | Number           | 120          | Width outer boundaries |
-| height          | Number           | 120          | Height outer boundaries, use strok for progress height |
+| width           | Number           | 120          | Width |
+| height          | Number           | 120          | Height, use strok for progress height |
 | verticalTextAlign      | Number    | 55           | Positioning of % text vertical |
 | horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
 | strokeWidth     | Number           | 30           | Width of background of progress |
-| strokePadding   | Number           | 2            | Padding between background and progress bar => gives progress width |
+| progressPadding | Number           | 0            | Padding between background and progress bar (height) |
 | type            | String           | line         | type of progress bar, line, circle or cylinder |

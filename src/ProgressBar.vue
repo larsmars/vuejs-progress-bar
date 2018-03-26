@@ -27,25 +27,19 @@
     </svg> 
     <svg v-if="line" id="line-progress"
       :style="lineStyle">
-      <g class="progress-container" :stroke="defaultOptions.progress.backgroundColor">
         <line x1="0"
           y1="50%"
           x2="100%"
           y2="50%"
-          :stroke-width="defaultOptions.layout.strokeWidth" />
-      </g>
-      <g class="progress-content">
+          :stroke="defaultOptions.progress.backgroundColor"
+          :stroke-width="defaultOptions.layout.height" />
         <line
           x1="0"
           y1="50%"
-          x2="100%"
+          :x2="progressValue"
           y2="50%"
-          :stroke="defaultOptions.progress.color" 
-          :fill="'white'" 
-          stroke-dasharray="100%"
-          :stroke-dashoffset="progressValue"
+          :stroke="defaultOptions.progress.color"
           :stroke-width="progressWidth" />
-      </g>
       <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
     </svg>
     </div>
@@ -64,7 +58,8 @@ export default {
         shadowColor: '#000000',
         fontSize: 14,
         fontFamily: 'Helvetica',
-        dynamicPosition: false
+        dynamicPosition: false,
+        hideText: false
       },
       progress: {
         color: '#2dbd2d',
@@ -76,7 +71,7 @@ export default {
         verticalTextAlign: 55,
         horizontalTextAlign: 43,
         strokeWidth: 30,
-        strokePadding: 2,
+        progressPadding: 0,
         type: 'line'
       }
     } 
@@ -166,10 +161,10 @@ export default {
         return this.LightenColor(this.cylinderProgressColor, 5);
     },
     progressValue () {
-      return (100 - this.value) + '%'
+      return this.value + '%'
     },
     progressWidth () {
-      return this.defaultOptions.layout.strokeWidth - this.defaultOptions.layout.strokePadding
+      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding)
     },
     lineStyle () {
       return {
@@ -179,6 +174,7 @@ export default {
     },
     textStyle () {
       return {
+        display: this.defaultOptions.text.hideText ? 'none' : 'inherit',
         fill: this.defaultOptions.text.color,
         fontSize: px(this.defaultOptions.text.fontSize),
         fontFamily: this.defaultOptions.text.fontFamily,

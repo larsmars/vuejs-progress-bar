@@ -61,8 +61,8 @@ options: {
 
 ### Properties
 
-| Name      | Type              | Default     | Description                        |
-| ---       | ---               | ---         | ---                                |
+| Name            | Type             | Default      | Description            |
+| ---             | ---              | ---          | ---                    |
 | value           | Number           | 0            | Value of progressbar % |
 | color           | String           | #FFFFFF      | Text color |
 | shadowEnable    | String           | true         | Text shadow enable |
@@ -74,9 +74,9 @@ options: {
 | color           | String           | #2dbd2d      | Progress color, use hex or rgb |
 | backgroundColor | String           | #C0C0C0      | Background color, use hex or rgb |
 | width           | Number           | 140          | Width |
-| height          | Number           | 35          | Height, use strok for progress height |
+| height          | Number           | 35           | Height, use strok for progress height |
 | verticalTextAlign      | Number    | 61           | Positioning of % text vertical |
 | horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
 | strokeWidth     | Number           | 30           | Width of background of progress |
-| progressPadding | Number           | 0            | Padding between background and progress bar (line only) |
-| type            | String           | line         | type of progress bar, line, circle or cylinder |
+| progressPadding | Number           | 0            | Padding between background and progress bar _(line only)_ |
+| type            | String           | line         | type of progress bar, _line_, _circle_ or _cylinder_ |

@@ -1,7 +1,7 @@
 # vuejs-progress-bar
 ProgressBar for vue.js <br>
-SVG/Vector based <br>
-3 modes: Line, Circle and Cylinder <br>
+SVG - Vector based <br>
+3 modes: _Line_, _Circle_ and _Cylinder_ <br>
 v1.0.0
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />

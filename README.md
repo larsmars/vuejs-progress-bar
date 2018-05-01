@@ -2,7 +2,7 @@
 ProgressBar for vue.js <br>
 SVG/Vector based <br>
 3 modes: _Line_, _Circle_ and _Cylinder_ <br>
-v1.0.1
+v1.0.2
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
@@ -48,12 +48,12 @@ options: {
     backgroundColor: '#C0C0C0'
   },
   layout: {
-    width: 120,
-    height: 120,
-    verticalTextAlign: 55,
+    height: 35,
+    width: 140,
+    verticalTextAlign: 61,
     horizontalTextAlign: 43,
     strokeWidth: 30,
-    progressPadding: 2,
+    progressPadding: 0,
     type: 'line'
   }
 }

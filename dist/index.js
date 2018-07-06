@@ -281,7 +281,11 @@ var px = function px(v) {
       return this.LightenColor(this.cylinderProgressColor, 5);
     },
     progressValue: function progressValue() {
-      return this.value + '%';
+      if (this.value === 0) {
+        return '0.00%';
+      } else {
+        return this.value + '%';
+      }
     },
     progressWidth: function progressWidth() {
       return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);

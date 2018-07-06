@@ -138,7 +138,8 @@ export default {
         return dynamicHorizontalTextAlign + '%'
       } else {
         if (this.value === 0 && this.line) {
-          return (this.defaultOptions.layout.horizontalTextAlign * 1.08) + '%'
+          let centerOffset = 1.2
+          return (this.defaultOptions.layout.horizontalTextAlign * centerOffset) + '%'
         } else {
           return this.defaultOptions.layout.horizontalTextAlign + '%'
         }

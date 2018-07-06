@@ -258,7 +258,8 @@ var px = function px(v) {
         return dynamicHorizontalTextAlign + '%';
       } else {
         if (this.value === 0 && this.line) {
-          return this.defaultOptions.layout.horizontalTextAlign * 1.08 + '%';
+          var centerOffset = 1.2;
+          return this.defaultOptions.layout.horizontalTextAlign * centerOffset + '%';
         } else {
           return this.defaultOptions.layout.horizontalTextAlign + '%';
         }

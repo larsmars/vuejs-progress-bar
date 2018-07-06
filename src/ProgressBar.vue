@@ -70,6 +70,7 @@ export default {
         width: 140,
         verticalTextAlign: 61,
         horizontalTextAlign: 43,
+        zeroOffset: 0,
         strokeWidth: 30,
         progressPadding: 0,
         type: 'line'
@@ -138,8 +139,7 @@ export default {
         return dynamicHorizontalTextAlign + '%'
       } else {
         if (this.value === 0 && this.line) {
-          let centerOffset = 1.2
-          return (this.defaultOptions.layout.horizontalTextAlign * centerOffset) + '%'
+          return (this.defaultOptions.layout.horizontalTextAlign + this.defaultOptions.layout.zeroOffset) + '%'
         } else {
           return this.defaultOptions.layout.horizontalTextAlign + '%'
         }

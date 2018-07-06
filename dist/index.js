@@ -257,7 +257,11 @@ var px = function px(v) {
         }
         return dynamicHorizontalTextAlign + '%';
       } else {
-        return this.defaultOptions.layout.horizontalTextAlign + '%';
+        if (this.value === 0 && this.line) {
+          return this.defaultOptions.layout.horizontalTextAlign * 1.08 + '%';
+        } else {
+          return this.defaultOptions.layout.horizontalTextAlign + '%';
+        }
       }
     },
     cylinderProgressColor: function cylinderProgressColor() {
@@ -281,11 +285,7 @@ var px = function px(v) {
       return this.LightenColor(this.cylinderProgressColor, 5);
     },
     progressValue: function progressValue() {
-      if (this.value === 0) {
-        return '0.00%';
-      } else {
-        return this.value + '%';
-      }
+      return this.value + '%';
     },
     progressWidth: function progressWidth() {
       return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);

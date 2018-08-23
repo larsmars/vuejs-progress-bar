@@ -1,46 +1,142 @@
 <template>
   <div class="progress-bar">
-    <div v-if="circle" :style="textStyleCircle" id="cont">
-      {{value+'%'}}
+    <div
+      v-if="circle"
+      :style="textStyleCircle"
+      id="cont"
+    >
+      {{ value+'%' }}
     </div>
-    <svg v-if="circle" :width="width" :height="height" viewBox="0 0 120 120">
-        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.backgroundColor" :stroke-width="defaultOptions.layout.strokeWidth" />
-        <circle cx="60" cy="60" :r="radiusCircle" fill="none" :stroke="defaultOptions.progress.color" :stroke-width="defaultOptions.layout.strokeWidth" :stroke-dasharray="strokeCircle" :stroke-dashoffset="strokeCircleOffset" />
+    <svg
+      v-if="circle"
+      :width="width"
+      :height="height"
+      viewBox="0 0 120 120"
+    >
+      <circle
+        cx="60"
+        cy="60"
+        :r="radiusCircle"
+        fill="none"
+        :stroke="defaultOptions.progress.backgroundColor"
+        :stroke-width="defaultOptions.layout.strokeWidth"
+      />
+      <circle
+        cx="60"
+        cy="60"
+        :r="radiusCircle"
+        fill="none"
+        :stroke="defaultOptions.progress.color"
+        :stroke-width="defaultOptions.layout.strokeWidth"
+        :stroke-dasharray="strokeCircle"
+        :stroke-dashoffset="strokeCircleOffset"
+      />
     </svg>
-    <svg v-if="cylinder" id="cylinder-progress" 
+    <svg
+      v-else-if="cylinder"
+      id="cylinder-progress" 
       width="150px" 
-      height="120px">
-      <g class="progress-container" :stroke="cylinderBackgroundStroke" :fill="defaultOptions.progress.backgroundColor">
-        <rect x="0" y="20" width="100%" height="80"></rect>
-        <ellipse cx="75" cy="20" rx="50%" ry="15" class="top"></ellipse>
-        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      height="120px"
+    >
+      <g 
+        class="progress-container"
+        :stroke="cylinderBackgroundStroke"
+        :fill="defaultOptions.progress.backgroundColor"
+      >
+        <rect
+          x="0"
+          y="20"
+          width="100%"
+          height="80"
+        />
+        <ellipse
+          cx="75"
+          cy="20"
+          rx="50%"
+          ry="15"
+          class="top"
+        />
+        <ellipse
+          cx="75"
+          cy="100"
+          rx="50%"
+          ry="15"
+          class="bottom"
+        />
       </g>
-      <g class="progress-content" :stroke="cylinderColorStroke" :fill="cylinderProgressColor">
-        <rect x="0" :y="rectY" width="100%" :height="rectHeight"></rect>
-        <ellipse cx="75" :cy="topCy" rx="50%" ry="15" class="top"></ellipse>
-        <ellipse cx="75" cy="100" rx="50%" ry="15" class="bottom"></ellipse>
+      <g
+        class="progress-content"
+        :stroke="cylinderColorStroke"
+        :fill="cylinderProgressColor"
+      >
+        <rect
+          x="0"
+          :y="rectY"
+          width="100%"
+          :height="rectHeight"
+        />
+        <ellipse
+          cx="75"
+          :cy="topCy"
+          rx="50%"
+          ry="15"
+          class="top"
+        />
+        <ellipse
+          cx="75"
+          cy="100"
+          rx="50%"
+          ry="15"
+          class="bottom"
+        />
       </g>
       <g class="progress-container">
-        <ellipse :stroke="cylinderBackgroundStroke" cx="75" cy="20" rx="50%" ry="15" class="top" fill="none"></ellipse>
+        <ellipse
+          :stroke="cylinderBackgroundStroke"
+          cx="75"
+          cy="20"
+          rx="50%"
+          ry="15"
+          class="top"
+          fill="none"
+        />
       </g>
-      <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
+      <text
+        :style="textStyle"
+        :x="horizontalTextAlignP"
+        :y="verticalTextAlignP"
+      >
+        {{ value }}%
+      </text>
     </svg> 
-    <svg v-if="line" id="line-progress"
-      :style="lineStyle">
-        <line x1="0"
+    <svg
+      v-else-if="line"
+      id="line-progress"
+      :style="lineStyle"
+    >
+        <line
+          x1="0"
           y1="50%"
           x2="100%"
           y2="50%"
           :stroke="defaultOptions.progress.backgroundColor"
-          :stroke-width="defaultOptions.layout.height" />
+          :stroke-width="defaultOptions.layout.height"
+        />
         <line
           x1="0"
           y1="50%"
           :x2="progressValue"
           y2="50%"
           :stroke="defaultOptions.progress.color"
-          :stroke-width="progressWidth" />
-      <text :style="textStyle" :x="horizontalTextAlignP" :y="verticalTextAlignP">{{value}}%</text>
+          :stroke-width="progressWidth"
+        />
+      <text
+        :style="textStyle"
+        :x="horizontalTextAlignP"
+        :y="verticalTextAlignP"
+      >
+        {{ value }}%
+      </text>
     </svg>
     </div>
 </template>
@@ -77,6 +173,11 @@ export default {
       }
     } 
   },
+  mounted () {
+    if (this.options !== null && this.options !== undefined) {
+      this.mergeDefaultOptionsWithProp(this.options)
+    }
+  },
   props: {
     options: {
       type: Object,
@@ -98,11 +199,6 @@ export default {
       radiusCircle: 54,
       strokeCircle: 0,
       strokeCircleOffset: 0
-    }
-  },
-  mounted () {
-    if(this.options !== null && this.options !== undefined) {
-      this.mergeDefaultOptionsWithProp(this.options)
     }
   },
   computed: {
@@ -198,21 +294,7 @@ export default {
       }
     }
   },
-  watch: {
-    value: function (val) {
-      let invertedVal = 100 - val;
-      if (this.cylinder) {
-        this.rectHeight = (80 - (invertedVal*.8));
-        this.rectY = (invertedVal*.8)+20;
-        this.topCy = ((-invertedVal*-.8)+20);
-        this.cylText =  (100-(invertedVal)+"%");
-      } else if (this.circle) {
-        this.strokeCircle = 2 * Math.PI * this.radiusCircle
-        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
-      }
-    }
-  },
-  methods: {
+    methods: {
     mergeDefaultOptionsWithProp: function (options) {
       var result = this.defaultOptions
       for (var option in options)
@@ -253,6 +335,20 @@ export default {
  
     return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
   
+    }
+  },
+  watch: {
+    value: function (val) {
+      let invertedVal = 100 - val;
+      if (this.cylinder) {
+        this.rectHeight = (80 - (invertedVal*.8));
+        this.rectY = (invertedVal*.8)+20;
+        this.topCy = ((-invertedVal*-.8)+20);
+        this.cylText =  (100-(invertedVal)+"%");
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle
+        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
+      }
     }
   }
 }

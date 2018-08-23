@@ -159,6 +159,102 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var s = function s(x) {
   return x + 's';
@@ -195,6 +291,11 @@ var px = function px(v) {
       }
     };
   },
+  mounted: function mounted() {
+    if (this.options !== null && this.options !== undefined) {
+      this.mergeDefaultOptionsWithProp(this.options);
+    }
+  },
 
   props: {
     options: {
@@ -218,11 +319,6 @@ var px = function px(v) {
       strokeCircle: 0,
       strokeCircleOffset: 0
     };
-  },
-  mounted: function mounted() {
-    if (this.options !== null && this.options !== undefined) {
-      this.mergeDefaultOptionsWithProp(this.options);
-    }
   },
 
   computed: {
@@ -318,20 +414,6 @@ var px = function px(v) {
       };
     }
   },
-  watch: {
-    value: function value(val) {
-      var invertedVal = 100 - val;
-      if (this.cylinder) {
-        this.rectHeight = 80 - invertedVal * .8;
-        this.rectY = invertedVal * .8 + 20;
-        this.topCy = -invertedVal * -.8 + 20;
-        this.cylText = 100 - invertedVal + "%";
-      } else if (this.circle) {
-        this.strokeCircle = 2 * Math.PI * this.radiusCircle;
-        this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100);
-      }
-    }
-  },
   methods: {
     mergeDefaultOptionsWithProp: function mergeDefaultOptionsWithProp(options) {
       var result = this.defaultOptions;
@@ -368,6 +450,20 @@ var px = function px(v) {
       if (g > 255) g = 255;else if (g < 0) g = 0;
 
       return (usePound ? "#" : "") + (g | b << 8 | r << 16).toString(16);
+    }
+  },
+  watch: {
+    value: function value(val) {
+      var invertedVal = 100 - val;
+      if (this.cylinder) {
+        this.rectHeight = 80 - invertedVal * .8;
+        this.rectY = invertedVal * .8 + 20;
+        this.topCy = -invertedVal * -.8 + 20;
+        this.cylText = 100 - invertedVal + "%";
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle;
+        this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100);
+      }
     }
   }
 });
@@ -558,7 +654,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "stroke-dasharray": _vm.strokeCircle,
       "stroke-dashoffset": _vm.strokeCircleOffset
     }
-  })]) : _vm._e(), _vm._v(" "), (_vm.cylinder) ? _c('svg', {
+  })]) : (_vm.cylinder) ? _c('svg', {
     attrs: {
       "id": "cylinder-progress",
       "width": "150px",
@@ -640,7 +736,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "x": _vm.horizontalTextAlignP,
       "y": _vm.verticalTextAlignP
     }
-  }, [_vm._v(_vm._s(_vm.value) + "%")])]) : _vm._e(), _vm._v(" "), (_vm.line) ? _c('svg', {
+  }, [_vm._v("\n      " + _vm._s(_vm.value) + "%\n    ")])]) : (_vm.line) ? _c('svg', {
     style: (_vm.lineStyle),
     attrs: {
       "id": "line-progress"
@@ -669,7 +765,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "x": _vm.horizontalTextAlignP,
       "y": _vm.verticalTextAlignP
     }
-  }, [_vm._v(_vm._s(_vm.value) + "%")])]) : _vm._e()])
+  }, [_vm._v("\n      " + _vm._s(_vm.value) + "%\n    ")])]) : _vm._e()])
 },staticRenderFns: []}
 
 /***/ }),

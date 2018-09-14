@@ -464,6 +464,11 @@ var px = function px(v) {
         this.strokeCircle = 2 * Math.PI * this.radiusCircle;
         this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100);
       }
+    },
+    options: function options(val) {
+      if (val !== null && val !== undefined) {
+        this.mergeDefaultOptionsWithProp(val);
+      }
     }
   }
 });

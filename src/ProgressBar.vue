@@ -177,6 +177,7 @@ export default {
     if (this.options !== null && this.options !== undefined) {
       this.mergeDefaultOptionsWithProp(this.options)
     }
+    this.updateValue(this.value)
   },
   props: {
     options: {
@@ -310,6 +311,18 @@ export default {
         }
       }
     },
+    updateValue (val) {
+      let invertedVal = 100 - val;
+      if (this.cylinder) {
+        this.rectHeight = (80 - (invertedVal*.8));
+        this.rectY = (invertedVal*.8)+20;
+        this.topCy = ((-invertedVal*-.8)+20);
+        this.cylText =  (100-(invertedVal)+"%");
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle
+        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
+      }
+    },
     LightenColor: function (color, level) {
     var usePound = false;
     if (color[0] == "#") {
@@ -339,16 +352,7 @@ export default {
   },
   watch: {
     value: function (val) {
-      let invertedVal = 100 - val;
-      if (this.cylinder) {
-        this.rectHeight = (80 - (invertedVal*.8));
-        this.rectY = (invertedVal*.8)+20;
-        this.topCy = ((-invertedVal*-.8)+20);
-        this.cylText =  (100-(invertedVal)+"%");
-      } else if (this.circle) {
-        this.strokeCircle = 2 * Math.PI * this.radiusCircle
-        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
-      }
+      this.updateValue(val)
     },
     options: function (val) {
       if (val !== null && val !== undefined) {

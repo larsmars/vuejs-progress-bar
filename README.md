@@ -64,9 +64,21 @@ options: {
 
 | Name            | Type             | Default      | Description            |
 | ---             | ---              | ---          | ---                    |
-| level           | Number           | 0            | Value of progressbar % |
-| min             | Number           | -20          | Min value|
-| max             | Number           | 25           | Max value |
-| scale           | String           | °C           | Scale format |
-| options         | Object           | Object       | Object struct |
-| customClass     | String           | N/A          | Custom css class |
+| value           | Number           | 0            | Value of progressbar % |
+| color           | String           | #FFFFFF      | Text color |
+| shadowEnable    | String           | true         | Text shadow enable |
+| shadowColor     | String           | #000000      | Text shadow color |
+| hideText        | Boolean          | false        | Hide text (%) |
+| fontSize        | String           | 14px         | Font size of % text |
+| fontFamily      | String           | Helvetica    | Font family text |
+| dynamicPosition | Boolean          | false        | Progress text % follow progress bar |
+| color           | String           | #2dbd2d      | Progress color, use hex or rgb |
+| backgroundColor | String           | #C0C0C0      | Background color, use hex or rgb |
+| width           | Number           | 140          | Width |
+| height          | Number           | 35           | Height, use strok for progress height |
+| verticalTextAlign      | Number    | 61           | Positioning of % text vertical |
+| horizontalTextAlign    | Number    | 43           | Positioning of % text horizontal |
+| zeroOffset      | Number           | 0            | Offset for zero (0%) for line progress bar |
+| strokeWidth     | Number           | 30           | Width of background of progress |
+| progressPadding | Number           | 0            | Padding between background and progress bar _(line only)_ |
+| type            | String           | line         | type of progress bar, _line_, _circle_ or _cylinder_ |

@@ -2,13 +2,13 @@
 ProgressBar for vue.js <br>
 SVG/Vector based <br>
 3 modes: _Line_, _Circle_ and _Cylinder_ <br>
-v1.0.8
+v1.1.0
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
-<img src="http://softwarefun.no/static/demo_progress_barV2.png" height="260">
+<img src="http://softwarefun.no/demo_progress_bar.png" height="260">
 
 Do you have questions or want a new feature? Use the "Issues" section :point_left:
 

@@ -34,11 +34,11 @@
     </svg>
     <svg
       v-else-if="cylinder"
-      id="cylinder-progress" 
-      width="150px" 
+      id="cylinder-progress"
+      width="150px"
       height="120px"
     >
-      <g 
+      <g
         class="progress-container"
         :stroke="cylinderBackgroundStroke"
         :fill="defaultOptions.progress.backgroundColor"
@@ -108,7 +108,7 @@
       >
         {{ value }}%
       </text>
-    </svg> 
+    </svg>
     <svg
       v-else-if="line"
       id="line-progress"
@@ -142,7 +142,6 @@
 </template>
 
 <script>
-const s = x => x + 's'
 const px = v => v + 'px'
 
 export default {
@@ -159,7 +158,7 @@ export default {
       },
       progress: {
         color: '#2dbd2d',
-        backgroundColor: '#C0C0C0',
+        backgroundColor: '#333333'
       },
       layout: {
         height: 35,
@@ -171,12 +170,13 @@ export default {
         progressPadding: 0,
         type: 'line'
       }
-    } 
+    }
   },
   mounted () {
     if (this.options !== null && this.options !== undefined) {
       this.mergeDefaultOptionsWithProp(this.options)
     }
+    this.updateValue(this.value)
   },
   props: {
     options: {
@@ -191,7 +191,7 @@ export default {
   },
   name: 'ProgressBar',
   data () {
-  	return {
+    return {
       defaultOptions: Object,
       rectHeight: 0,
       rectY: 90,
@@ -226,10 +226,10 @@ export default {
     horizontalTextAlignP () {
       if (this.defaultOptions.text.dynamicPosition) {
         let dynamicHorizontalTextAlign = 0
-        if(this.value > 75) {
+        if (this.value > 75) {
           dynamicHorizontalTextAlign = 75
         } else {
-          dynamicHorizontalTextAlign = this.value 
+          dynamicHorizontalTextAlign = this.value
           dynamicHorizontalTextAlign += 2
         }
         return dynamicHorizontalTextAlign + '%'
@@ -256,10 +256,10 @@ export default {
       }
     },
     cylinderBackgroundStroke () {
-        return this.LightenColor(this.cylinderBackgroundColor, 25);
+      return this.LightenColor(this.cylinderBackgroundColor, 25)
     },
     cylinderColorStroke () {
-        return this.LightenColor(this.cylinderProgressColor, 5);
+      return this.LightenColor(this.cylinderProgressColor, 5)
     },
     progressValue () {
       return this.value + '%'
@@ -297,9 +297,8 @@ export default {
   methods: {
     mergeDefaultOptionsWithProp: function (options) {
       var result = this.defaultOptions
-      for (var option in options)
-      {
-        if (options[option] !== null && typeof(options[option]) === 'object') {
+      for (var option in options) {
+        if (options[option] !== null && typeof (options[option]) === 'object') {
           for (var subOption in options[option]) {
             if (options[option][subOption] !== undefined && options[option][subOption] !== null) {
               result[option][subOption] = options[option][subOption]
@@ -310,45 +309,47 @@ export default {
         }
       }
     },
+    updateValue (val) {
+      let invertedVal = 100 - val
+      if (this.cylinder) {
+        this.rectHeight = (80 - (invertedVal * 0.8))
+        this.rectY = (invertedVal * 0.8) + 20
+        this.topCy = ((-invertedVal * -0.8) + 20)
+        this.cylText = (100 - (invertedVal) + '%')
+      } else if (this.circle) {
+        this.strokeCircle = 2 * Math.PI * this.radiusCircle
+        this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100)
+      }
+    },
     LightenColor: function (color, level) {
-    var usePound = false;
-    if (color[0] == "#") {
-        color = color.slice(1);
-        usePound = true;
-    }
- 
-    var num = parseInt(color,16);
-    var r = (num >> 16) + level;
+      var usePound = false
+      if (color[0] === '#') {
+        color = color.slice(1)
+        usePound = true
+      }
 
-    if (r > 255) r = 255;
-    else if  (r < 0) r = 0;
- 
-    var b = ((num >> 8) & 0x00FF) + level;
- 
-    if (b > 255) b = 255;
-    else if  (b < 0) b = 0;
- 
-    var g = (num & 0x0000FF) + level;
- 
-    if (g > 255) g = 255;
-    else if (g < 0) g = 0;
- 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
-  
+      var num = parseInt(color, 16)
+      var r = (num >> 16) + level
+
+      if (r > 255) r = 255
+      else if (r < 0) r = 0
+
+      var b = ((num >> 8) & 0x00FF) + level
+
+      if (b > 255) b = 255
+      else if (b < 0) b = 0
+
+      var g = (num & 0x0000FF) + level
+
+      if (g > 255) g = 255
+      else if (g < 0) g = 0
+
+      return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
     }
   },
   watch: {
     value: function (val) {
-      let invertedVal = 100 - val;
-      if (this.cylinder) {
-        this.rectHeight = (80 - (invertedVal*.8));
-        this.rectY = (invertedVal*.8)+20;
-        this.topCy = ((-invertedVal*-.8)+20);
-        this.cylText =  (100-(invertedVal)+"%");
-      } else if (this.circle) {
-        this.strokeCircle = 2 * Math.PI * this.radiusCircle
-        this.strokeCircleOffset = this.strokeCircle * ((100-val)/100)
-      }
+      this.updateValue(val)
     },
     options: function (val) {
       if (val !== null && val !== undefined) {
@@ -358,7 +359,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 

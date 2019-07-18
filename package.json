@@ -1,16 +1,16 @@
 {
   "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "LMH, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
   "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",
   "private": false,
-  "main": "./dist/VueThermometer.common.js",
+  "main": "./dist/ProgressBar.common.js",
   "scripts": {
+    "lint": "vue-cli-service lint",
     "serve": "vue-cli-service serve",
-    "build-bundle": "vue-cli-service build --target lib --name ProgressBar ./src/components/index.js",
-    "lint": "vue-cli-service lint"
+    "build-bundle": "vue-cli-service build --target lib --name ProgressBar ./src/components/index.js"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",

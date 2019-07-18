@@ -1,46 +1,66 @@
 {
   "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "author": "LMH, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
   "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",
   "private": false,
+  "main": "./dist/VueThermometer.common.js",
   "scripts": {
-    "build:client": "webpack --config ./webpack.config.js --progress --hide-modules",
-    "build:ssr": "webpack --config ./webpack.ssr.config.js  --progress --hide-modules",
-    "build": "npm run build:client && npm run build:ssr"
+    "serve": "vue-cli-service serve",
+    "build-bundle": "vue-cli-service build --target lib --name ProgressBar ./src/components/index.js",
+    "lint": "vue-cli-service lint"
   },
-  "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/larsmars/vuejs-progress-bar.git"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-service": "^3.9.2",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.0.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
   },
-  "bugs": {
-    "url": "https://github.com/larsmars/vuejs-progress-bar/issues"
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   },
-  "peerDependencies": {
-    "vue": "^2.0.0"
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "keywords": [
     "vuejs",
     "vue.js",
     "progress",
-    "progressbar"
-  ],
-  "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-preset-latest": "^6.0.0",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "node-sass": "^4.11.0",
-    "optimize-css-assets-webpack-plugin": "^3.1.1",
-    "sass-loader": "^5.0.1",
-    "vue": "^2.5.21",
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.5.21",
-    "webpack": "^2.2.0",
-    "webpack-merge": "^4.1.5"
-  }
+    "progressbar",
+    "progress-bar"
+  ]
 }

@@ -8,7 +8,7 @@ v1.1.2
 
 [Live demo](http://softwarefun.no/#/progressbar)
 
-<img src="http://softwarefun.no/demo_progress_bar.png" height="260">
+<img src="https://softwarefun.no/demo_progress_bar.png" height="260">
 
 Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
@@ -81,4 +81,4 @@ options: {
 | zeroOffset      | Number           | 0            | Offset for zero (0%) for line progress bar |
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | progressPadding | Number           | 0            | Padding between background and progress bar _(line only)_ |
-| type            | String           | line         | type of progress bar, _line_, _circle_, _cylinder_ or _battery_ |
+| type            | String           | line         | type of progress bar: _line_, _circle_, _cylinder_ or _battery_ |

@@ -1,8 +1,8 @@
 # vuejs-progress-bar
 ProgressBar for vue.js <br>
 SVG/Vector based <br>
-3 modes: _Line_, _Circle_ and _Cylinder_ <br>
-v1.1.1
+4 modes: _Line_, _Circle_, _Cylinder_ and _Battery <br>
+v1.1.2
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
@@ -81,4 +81,4 @@ options: {
 | zeroOffset      | Number           | 0            | Offset for zero (0%) for line progress bar |
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | progressPadding | Number           | 0            | Padding between background and progress bar _(line only)_ |
-| type            | String           | line         | type of progress bar, _line_, _circle_ or _cylinder_ |
+| type            | String           | line         | type of progress bar, _line_, _circle_, _cylinder_ or _battery_ |

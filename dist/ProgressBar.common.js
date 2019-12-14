@@ -553,89 +553,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "2350":
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
 /***/ "241e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -645,6 +562,89 @@ module.exports = function (it) {
   return Object(defined(it));
 };
 
+
+/***/ }),
+
+/***/ "24fb":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+// eslint-disable-next-line func-names
+module.exports = function (useSourceMap) {
+  var list = []; // return the list of modules as css string
+
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = cssWithMappingToString(item, useSourceMap);
+
+      if (item[2]) {
+        return "@media ".concat(item[2], " {").concat(content, "}");
+      }
+
+      return content;
+    }).join('');
+  }; // import a list of modules into the list
+  // eslint-disable-next-line func-names
+
+
+  list.i = function (modules, mediaQuery) {
+    if (typeof modules === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      modules = [[null, modules, '']];
+    }
+
+    for (var i = 0; i < modules.length; i++) {
+      var item = [].concat(modules[i]);
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
+    }
+  };
+
+  return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+  var content = item[1] || ''; // eslint-disable-next-line prefer-destructuring
+
+  var cssMapping = item[3];
+
+  if (!cssMapping) {
+    return content;
+  }
+
+  if (useSourceMap && typeof btoa === 'function') {
+    var sourceMapping = toComment(cssMapping);
+    var sourceURLs = cssMapping.sources.map(function (source) {
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot).concat(source, " */");
+    });
+    return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+  }
+
+  return [content].join('\n');
+} // Adapted from convert-source-map (MIT)
+
+
+function toComment(sourceMap) {
+  // eslint-disable-next-line no-undef
+  var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+  var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+  return "/*# ".concat(data, " */");
+}
 
 /***/ }),
 
@@ -1595,6 +1595,17 @@ module.exports = $export;
 
 /***/ }),
 
+/***/ "65dc":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("676c");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "6718":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1608,6 +1619,21 @@ module.exports = function (name) {
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
 
+
+/***/ }),
+
+/***/ "676c":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("c663");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("8b233488", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -2048,21 +2074,6 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "9c5a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("ac5f");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("499e").default
-var update = add("0df8e2f8", content, true, {"sourceMap":false,"shadowMode":false});
-
-/***/ }),
-
 /***/ "9def":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2172,21 +2183,6 @@ module.exports = exporter;
 
 /***/ }),
 
-/***/ "ac5f":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("2350")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".progress-bar[data-v-9cf5167e]{display:inline-block;-ms-flex-line-pack:stretch;align-content:stretch}.progress-bar .progress-container[data-v-9cf5167e]{stroke-width:2px}.progress-bar .progress-container .top[data-v-9cf5167e]{z-index:2}.progress-bar .progress-content[data-v-9cf5167e]{stroke-width:2px}.progress-bar .progress-content .top[data-v-9cf5167e]{z-index:1}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "aebd":
 /***/ (function(module, exports) {
 
@@ -2199,6 +2195,21 @@ module.exports = function (bitmap, value) {
   };
 };
 
+
+/***/ }),
+
+/***/ "af29":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("f311");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("e91a3666", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -2428,6 +2439,18 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 
 /***/ }),
 
+/***/ "c663":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".progress-container[data-v-464cd659]{stroke-width:2px}.progress-container .top[data-v-464cd659]{z-index:2}.progress-content[data-v-464cd659]{stroke-width:2px}.progress-content .top[data-v-464cd659]{z-index:1}", ""]);
+
+
+/***/ }),
+
 /***/ "c69a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2435,6 +2458,17 @@ module.exports = !__webpack_require__("9e1e") && !__webpack_require__("79e5")(fu
   return Object.defineProperty(__webpack_require__("230e")('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
+
+/***/ }),
+
+/***/ "c869":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_8248d938_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("af29");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_8248d938_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_8248d938_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_8248d938_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2501,17 +2535,6 @@ module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
-
-/***/ }),
-
-/***/ "d4dd":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_9cf5167e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9c5a");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_9cf5167e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_9cf5167e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBar_vue_vue_type_style_index_0_id_9cf5167e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2725,6 +2748,18 @@ var meta = module.exports = {
 
 /***/ }),
 
+/***/ "f311":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".progress-bar[data-v-8248d938]{display:inline-block;-ms-flex-line-pack:stretch;align-content:stretch;width:0;line-height:20px}", ""]);
+
+
+/***/ }),
+
 /***/ "f6fd":
 /***/ (function(module, exports) {
 
@@ -2834,12 +2869,15 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"df4ede0a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBar.vue?vue&type=template&id=9cf5167e&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"progress-bar"},[(_vm.circle)?_c('div',{style:(_vm.textStyleCircle),attrs:{"id":"cont"}},[_vm._v("\n    "+_vm._s(_vm.value+'%')+"\n  ")]):_vm._e(),(_vm.circle)?_c('svg',{attrs:{"width":_vm.width,"height":_vm.height,"viewBox":"0 0 120 120"}},[_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.strokeWidth}}),_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.color,"stroke-width":_vm.defaultOptions.layout.strokeWidth,"stroke-dasharray":_vm.strokeCircle,"stroke-dashoffset":_vm.strokeCircleOffset}})]):(_vm.cylinder)?_c('svg',{attrs:{"id":"cylinder-progress","width":"150px","height":"120px"}},[_c('g',{staticClass:"progress-container",attrs:{"stroke":_vm.cylinderBackgroundStroke,"fill":_vm.defaultOptions.progress.backgroundColor}},[_c('rect',{attrs:{"x":"0","y":"20","width":"100%","height":"80"}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":"20","rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-content",attrs:{"stroke":_vm.cylinderColorStroke,"fill":_vm.cylinderProgressColor}},[_c('rect',{attrs:{"x":"0","y":_vm.rectY,"width":"100%","height":_vm.rectHeight}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":_vm.topCy,"rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-container"},[_c('ellipse',{staticClass:"top",attrs:{"stroke":_vm.cylinderBackgroundStroke,"cx":"75","cy":"20","rx":"50%","ry":"15","fill":"none"}})]),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v("\n      "+_vm._s(_vm.value)+"%\n    ")])]):(_vm.line)?_c('svg',{style:(_vm.lineStyle),attrs:{"id":"line-progress"}},[_c('line',{attrs:{"x1":"0","y1":"50%","x2":"100%","y2":"50%","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.height}}),_c('line',{attrs:{"x1":"0","y1":"50%","x2":_vm.progressValue,"y2":"50%","stroke":_vm.defaultOptions.progress.color,"stroke-width":_vm.progressWidth}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v("\n      "+_vm._s(_vm.value)+"%\n    ")])]):_vm._e()])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBar.vue?vue&type=template&id=8248d938&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c(_vm.progressBarType,{tag:"component",staticClass:"progress-bar",attrs:{"value":_vm.value,"options":_vm.options}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ProgressBar.vue?vue&type=template&id=9cf5167e&scoped=true&
+// CONCATENATED MODULE: ./src/components/ProgressBar.vue?vue&type=template&id=8248d938&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.to-string.js
 var es6_regexp_to_string = __webpack_require__("6b54");
@@ -2871,162 +2909,15 @@ function typeof_typeof(obj) {
 
   return typeof_typeof(obj);
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
-var es6_number_constructor = __webpack_require__("c5f6");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBar.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./src/components/ProgressBarMixin.js
 
 
 
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var px = function px(v) {
   return v + 'px';
 };
 
-/* harmony default export */ var ProgressBarvue_type_script_lang_js_ = ({
+var ProgressBarMixin = {
   created: function created() {
     this.defaultOptions = {
       text: {
@@ -3040,16 +2931,17 @@ var px = function px(v) {
       },
       progress: {
         color: '#2dbd2d',
+        frameColor: '#333333',
         backgroundColor: '#333333'
       },
       layout: {
-        height: 35,
+        height: 36,
         width: 140,
         verticalTextAlign: 61,
         horizontalTextAlign: 43,
         zeroOffset: 0,
         strokeWidth: 30,
-        progressPadding: 0,
+        progressPadding: 10,
         type: 'line'
       }
     };
@@ -3061,18 +2953,6 @@ var px = function px(v) {
 
     this.updateValue(this.value);
   },
-  props: {
-    options: {
-      type: Object,
-      required: false
-    },
-    value: {
-      type: Number,
-      required: false,
-      default: 0
-    }
-  },
-  name: 'ProgressBar',
   data: function data() {
     return {
       defaultOptions: Object,
@@ -3085,6 +2965,7 @@ var px = function px(v) {
     };
   },
   computed: {
+    // ProgressBar Type
     cylinder: function cylinder() {
       return this.defaultOptions.layout.type === 'cylinder';
     },
@@ -3094,6 +2975,23 @@ var px = function px(v) {
     circle: function circle() {
       return this.defaultOptions.layout.type === 'circle';
     },
+    battery: function battery() {
+      return this.defaultOptions.layout.type === 'battery';
+    },
+    progressBarType: function progressBarType() {
+      if (this.cylinder) {
+        return 'ProgressBarCylinder';
+      } else if (this.line) {
+        return 'ProgressBarLine';
+      } else if (this.circle) {
+        return 'ProgressBarCircle';
+      } else if (this.battery) {
+        return 'ProgressBarBattery';
+      }
+
+      return 'ProgressBarLine';
+    },
+    // ProgressBar Size
     width: function width() {
       return this.defaultOptions.layout.width;
     },
@@ -3110,11 +3008,20 @@ var px = function px(v) {
       if (this.defaultOptions.text.dynamicPosition) {
         var dynamicHorizontalTextAlign = 0;
 
-        if (this.value > 75) {
-          dynamicHorizontalTextAlign = 75;
+        if (this.battery) {
+          if (this.value > 62) {
+            dynamicHorizontalTextAlign = 65;
+          } else {
+            dynamicHorizontalTextAlign = this.value;
+            dynamicHorizontalTextAlign += 3;
+          }
         } else {
-          dynamicHorizontalTextAlign = this.value;
-          dynamicHorizontalTextAlign += 2;
+          if (this.value > 72) {
+            dynamicHorizontalTextAlign = 75;
+          } else {
+            dynamicHorizontalTextAlign = this.value;
+            dynamicHorizontalTextAlign += 3;
+          }
         }
 
         return dynamicHorizontalTextAlign + '%';
@@ -3126,6 +3033,31 @@ var px = function px(v) {
         }
       }
     },
+    batteryStyleFrame: function batteryStyleFrame() {
+      return this.lineStyleSvgFrame;
+    },
+    lineProgressHeight: function lineProgressHeight() {
+      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);
+    },
+    batteryProgress: function batteryProgress() {
+      return {
+        height: px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding),
+        width: px(this.value * ((this.defaultOptions.layout.width - this.defaultOptions.layout.progressPadding) / 100))
+      };
+    },
+    lineStyleSvgFrame: function lineStyleSvgFrame() {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width)
+      };
+    },
+    batteryStyleSvgFrame: function batteryStyleSvgFrame() {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width + this.defaultOptions.layout.width / 16)
+      };
+    },
+    // ProgressBar Colors
     cylinderProgressColor: function cylinderProgressColor() {
       if (this.value === 0) {
         return this.defaultOptions.progress.backgroundColor;
@@ -3140,23 +3072,11 @@ var px = function px(v) {
         return this.defaultOptions.progress.backgroundColor;
       }
     },
-    cylinderBackgroundStroke: function cylinderBackgroundStroke() {
+    cylinderBackgroundColorStroke: function cylinderBackgroundColorStroke() {
       return this.LightenColor(this.cylinderBackgroundColor, 25);
     },
     cylinderColorStroke: function cylinderColorStroke() {
       return this.LightenColor(this.cylinderProgressColor, 5);
-    },
-    progressValue: function progressValue() {
-      return this.value + '%';
-    },
-    progressWidth: function progressWidth() {
-      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);
-    },
-    lineStyle: function lineStyle() {
-      return {
-        height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width)
-      };
     },
     textStyle: function textStyle() {
       return {
@@ -3177,6 +3097,16 @@ var px = function px(v) {
         left: px(this.defaultOptions.layout.horizontalTextAlign),
         position: 'relative'
       };
+    },
+    progressColor: function progressColor() {
+      return this.defaultOptions.progress.color;
+    },
+    frameColor: function frameColor() {
+      return this.defaultOptions.progress.frameColor;
+    },
+    // ProgressBar Value
+    progressValue: function progressValue() {
+      return this.value + '%';
     }
   },
   methods: {
@@ -3208,6 +3138,7 @@ var px = function px(v) {
         this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100);
       }
     },
+    // Used for cylinder
     LightenColor: function LightenColor(color, level) {
       var usePound = false;
 
@@ -3236,12 +3167,74 @@ var px = function px(v) {
       }
     }
   }
-});
-// CONCATENATED MODULE: ./src/components/ProgressBar.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_ProgressBarvue_type_script_lang_js_ = (ProgressBarvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ProgressBar.vue?vue&type=style&index=0&id=9cf5167e&lang=scss&scoped=true&
-var ProgressBarvue_type_style_index_0_id_9cf5167e_lang_scss_scoped_true_ = __webpack_require__("d4dd");
+};
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarBattery.vue?vue&type=template&id=6b9b8aac&
+var ProgressBarBatteryvue_type_template_id_6b9b8aac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-battery"}},[_c('svg',{style:(_vm.batteryStyleSvgFrame),attrs:{"id":"battery-progress"}},[_c('rect',{style:(_vm.batteryStyleFrame),attrs:{"fill":_vm.frameColor,"stroke-width":"3","rx":"5","ry":"5"}}),_c('rect',{attrs:{"fill":_vm.frameColor,"stroke-width":"3","x":_vm.defaultOptions.layout.width - 0,"y":_vm.defaultOptions.layout.height / 4,"width":_vm.defaultOptions.layout.width / 16,"height":_vm.defaultOptions.layout.height / 2,"rx":"1"}}),_c('rect',{style:(_vm.batteryProgress),attrs:{"fill":_vm.progressColor,"x":_vm.defaultOptions.layout.progressPadding / 2,"y":_vm.defaultOptions.layout.progressPadding / 2}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarBatteryvue_type_template_id_6b9b8aac_staticRenderFns = []
 
+
+// CONCATENATED MODULE: ./src/components/ProgressBarBattery.vue?vue&type=template&id=6b9b8aac&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarBattery.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ProgressBarBatteryvue_type_script_lang_js_ = ({
+  name: 'ProgressBarBattery',
+  mixins: [ProgressBarMixin],
+  props: {
+    options: {
+      type: Object,
+      required: false,
+      default: function _default() {}
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ProgressBarBattery.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ProgressBarBatteryvue_type_script_lang_js_ = (ProgressBarBatteryvue_type_script_lang_js_); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -3337,6 +3330,366 @@ function normalizeComponent (
   }
 }
 
+// CONCATENATED MODULE: ./src/components/ProgressBarBattery.vue
+
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  components_ProgressBarBatteryvue_type_script_lang_js_,
+  ProgressBarBatteryvue_type_template_id_6b9b8aac_render,
+  ProgressBarBatteryvue_type_template_id_6b9b8aac_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ProgressBarBattery = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCircle.vue?vue&type=template&id=8f509f48&
+var ProgressBarCirclevue_type_template_id_8f509f48_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-circle"}},[_c('div',{style:(_vm.textStyleCircle),attrs:{"id":"cont"}},[_vm._v(" "+_vm._s(_vm.value+'%')+" ")]),_c('svg',{attrs:{"width":_vm.width,"height":_vm.height,"viewBox":"0 0 120 120"}},[_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.strokeWidth}}),_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.color,"stroke-width":_vm.defaultOptions.layout.strokeWidth,"stroke-dasharray":_vm.strokeCircle,"stroke-dashoffset":_vm.strokeCircleOffset}})])])}
+var ProgressBarCirclevue_type_template_id_8f509f48_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ProgressBarCircle.vue?vue&type=template&id=8f509f48&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCircle.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ProgressBarCirclevue_type_script_lang_js_ = ({
+  name: 'ProgressBarCircle',
+  mixins: [ProgressBarMixin],
+  props: {
+    options: {
+      type: Object,
+      required: false,
+      default: function _default() {}
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ProgressBarCircle.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ProgressBarCirclevue_type_script_lang_js_ = (ProgressBarCirclevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/ProgressBarCircle.vue
+
+
+
+
+
+/* normalize component */
+
+var ProgressBarCircle_component = normalizeComponent(
+  components_ProgressBarCirclevue_type_script_lang_js_,
+  ProgressBarCirclevue_type_template_id_8f509f48_render,
+  ProgressBarCirclevue_type_template_id_8f509f48_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ProgressBarCircle = (ProgressBarCircle_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCylinder.vue?vue&type=template&id=464cd659&scoped=true&
+var ProgressBarCylindervue_type_template_id_464cd659_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-cylinder"}},[_c('svg',{attrs:{"id":"cylinder-progress","width":"150px","height":"120px"}},[_c('g',{staticClass:"progress-container",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"fill":_vm.defaultOptions.progress.backgroundColor}},[_c('rect',{attrs:{"x":"0","y":"20","width":"100%","height":"80"}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":"20","rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-content",attrs:{"stroke":_vm.cylinderColorStroke,"fill":_vm.cylinderProgressColor}},[_c('rect',{attrs:{"x":"0","y":_vm.rectY,"width":"100%","height":_vm.rectHeight}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":_vm.topCy,"rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-container"},[_c('ellipse',{staticClass:"top",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"cx":"75","cy":"20","rx":"50%","ry":"15","fill":"none"}})]),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarCylindervue_type_template_id_464cd659_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=template&id=464cd659&scoped=true&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCylinder.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ProgressBarCylindervue_type_script_lang_js_ = ({
+  name: 'ProgressBarCylinder',
+  mixins: [ProgressBarMixin],
+  props: {
+    options: {
+      type: Object,
+      required: false,
+      default: function _default() {}
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ProgressBarCylindervue_type_script_lang_js_ = (ProgressBarCylindervue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=style&index=0&id=464cd659&lang=scss&scoped=true&
+var ProgressBarCylindervue_type_style_index_0_id_464cd659_lang_scss_scoped_true_ = __webpack_require__("65dc");
+
+// CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ProgressBarCylinder_component = normalizeComponent(
+  components_ProgressBarCylindervue_type_script_lang_js_,
+  ProgressBarCylindervue_type_template_id_464cd659_scoped_true_render,
+  ProgressBarCylindervue_type_template_id_464cd659_scoped_true_staticRenderFns,
+  false,
+  null,
+  "464cd659",
+  null
+  
+)
+
+/* harmony default export */ var ProgressBarCylinder = (ProgressBarCylinder_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarLine.vue?vue&type=template&id=37a758fb&
+var ProgressBarLinevue_type_template_id_37a758fb_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-line"}},[_c('svg',{style:(_vm.lineStyleSvgFrame),attrs:{"id":"line-progress"}},[_c('line',{attrs:{"x1":"0","y1":"50%","x2":"100%","y2":"50%","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.height}}),_c('line',{attrs:{"x1":"0","y1":"50%","x2":_vm.progressValue,"y2":"50%","stroke":_vm.progressColor,"stroke-width":_vm.lineProgressHeight}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarLinevue_type_template_id_37a758fb_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/ProgressBarLine.vue?vue&type=template&id=37a758fb&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarLine.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var ProgressBarLinevue_type_script_lang_js_ = ({
+  name: 'ProgressBarLine',
+  mixins: [ProgressBarMixin],
+  props: {
+    options: {
+      type: Object,
+      required: false,
+      default: function _default() {}
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ProgressBarLine.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ProgressBarLinevue_type_script_lang_js_ = (ProgressBarLinevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/ProgressBarLine.vue
+
+
+
+
+
+/* normalize component */
+
+var ProgressBarLine_component = normalizeComponent(
+  components_ProgressBarLinevue_type_script_lang_js_,
+  ProgressBarLinevue_type_template_id_37a758fb_render,
+  ProgressBarLinevue_type_template_id_37a758fb_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var ProgressBarLine = (ProgressBarLine_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBar.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ var ProgressBarvue_type_script_lang_js_ = ({
+  name: 'ProgressBar',
+  components: {
+    ProgressBarBattery: ProgressBarBattery,
+    ProgressBarCircle: ProgressBarCircle,
+    ProgressBarCylinder: ProgressBarCylinder,
+    ProgressBarLine: ProgressBarLine
+  },
+  mixins: [ProgressBarMixin],
+  props: {
+    options: {
+      type: Object,
+      required: false,
+      default: function _default() {}
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: 0
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/ProgressBar.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ProgressBarvue_type_script_lang_js_ = (ProgressBarvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ProgressBar.vue?vue&type=style&index=0&id=8248d938&lang=scss&scoped=true&
+var ProgressBarvue_type_style_index_0_id_8248d938_lang_scss_scoped_true_ = __webpack_require__("c869");
+
 // CONCATENATED MODULE: ./src/components/ProgressBar.vue
 
 
@@ -3346,18 +3699,18 @@ function normalizeComponent (
 
 /* normalize component */
 
-var component = normalizeComponent(
+var ProgressBar_component = normalizeComponent(
   components_ProgressBarvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
   null,
-  "9cf5167e",
+  "8248d938",
   null
   
 )
 
-/* harmony default export */ var ProgressBar = (component.exports);
+/* harmony default export */ var ProgressBar = (ProgressBar_component.exports);
 // CONCATENATED MODULE: ./src/components/index.js
 
 

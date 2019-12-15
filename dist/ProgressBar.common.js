@@ -857,6 +857,18 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 /***/ }),
 
+/***/ "31ae":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".progress-container[data-v-f1691f2e]{stroke-width:2px}.progress-container .top[data-v-f1691f2e]{z-index:2}.progress-content[data-v-f1691f2e]{stroke-width:2px}.progress-content .top[data-v-f1691f2e]{z-index:1}", ""]);
+
+
+/***/ }),
+
 /***/ "32e9":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1595,17 +1607,6 @@ module.exports = $export;
 
 /***/ }),
 
-/***/ "65dc":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("676c");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_464cd659_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
 /***/ "6718":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1619,21 +1620,6 @@ module.exports = function (name) {
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
 
-
-/***/ }),
-
-/***/ "676c":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("c663");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("499e").default
-var update = add("8b233488", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -1871,6 +1857,17 @@ module.exports = function (exec) {
   }
 };
 
+
+/***/ }),
+
+/***/ "7e69":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_f1691f2e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("ce94");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_f1691f2e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_f1691f2e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProgressBarCylinder_vue_vue_type_style_index_0_id_f1691f2e_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -2439,18 +2436,6 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 
 /***/ }),
 
-/***/ "c663":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
-exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".progress-container[data-v-464cd659]{stroke-width:2px}.progress-container .top[data-v-464cd659]{z-index:2}.progress-content[data-v-464cd659]{stroke-width:2px}.progress-content .top[data-v-464cd659]{z-index:1}", ""]);
-
-
-/***/ }),
-
 /***/ "c69a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2525,6 +2510,21 @@ module.exports = function (object, names) {
   return result;
 };
 
+
+/***/ }),
+
+/***/ "ce94":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("31ae");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("bfa0d6aa", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -2931,7 +2931,6 @@ var ProgressBarMixin = {
       },
       progress: {
         color: '#2dbd2d',
-        frameColor: '#333333',
         backgroundColor: '#333333'
       },
       layout: {
@@ -3004,6 +3003,31 @@ var ProgressBarMixin = {
     verticalTextAlignP: function verticalTextAlignP() {
       return this.defaultOptions.layout.verticalTextAlign + '%';
     },
+    batteryStyleFrame: function batteryStyleFrame() {
+      return this.lineStyleSvgFrame;
+    },
+    lineProgressHeight: function lineProgressHeight() {
+      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);
+    },
+    batteryProgress: function batteryProgress() {
+      return {
+        height: px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding),
+        width: px(this.value * ((this.defaultOptions.layout.width - this.defaultOptions.layout.progressPadding) / 100))
+      };
+    },
+    lineStyleSvgFrame: function lineStyleSvgFrame() {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width)
+      };
+    },
+    batteryStyleSvgFrame: function batteryStyleSvgFrame() {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width + this.defaultOptions.layout.width / 16)
+      };
+    },
+    // Dynamic position of text horizontal
     horizontalTextAlignP: function horizontalTextAlignP() {
       if (this.defaultOptions.text.dynamicPosition) {
         var dynamicHorizontalTextAlign = 0;
@@ -3032,30 +3056,6 @@ var ProgressBarMixin = {
           return this.defaultOptions.layout.horizontalTextAlign + '%';
         }
       }
-    },
-    batteryStyleFrame: function batteryStyleFrame() {
-      return this.lineStyleSvgFrame;
-    },
-    lineProgressHeight: function lineProgressHeight() {
-      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding);
-    },
-    batteryProgress: function batteryProgress() {
-      return {
-        height: px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding),
-        width: px(this.value * ((this.defaultOptions.layout.width - this.defaultOptions.layout.progressPadding) / 100))
-      };
-    },
-    lineStyleSvgFrame: function lineStyleSvgFrame() {
-      return {
-        height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width)
-      };
-    },
-    batteryStyleSvgFrame: function batteryStyleSvgFrame() {
-      return {
-        height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width + this.defaultOptions.layout.width / 16)
-      };
     },
     // ProgressBar Colors
     cylinderProgressColor: function cylinderProgressColor() {
@@ -3101,8 +3101,8 @@ var ProgressBarMixin = {
     progressColor: function progressColor() {
       return this.defaultOptions.progress.color;
     },
-    frameColor: function frameColor() {
-      return this.defaultOptions.progress.frameColor;
+    backgroundColor: function backgroundColor() {
+      return this.defaultOptions.progress.backgroundColor;
     },
     // ProgressBar Value
     progressValue: function progressValue() {
@@ -3168,12 +3168,12 @@ var ProgressBarMixin = {
     }
   }
 };
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarBattery.vue?vue&type=template&id=6b9b8aac&
-var ProgressBarBatteryvue_type_template_id_6b9b8aac_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-battery"}},[_c('svg',{style:(_vm.batteryStyleSvgFrame),attrs:{"id":"battery-progress"}},[_c('rect',{style:(_vm.batteryStyleFrame),attrs:{"fill":_vm.frameColor,"stroke-width":"3","rx":"5","ry":"5"}}),_c('rect',{attrs:{"fill":_vm.frameColor,"stroke-width":"3","x":_vm.defaultOptions.layout.width - 0,"y":_vm.defaultOptions.layout.height / 4,"width":_vm.defaultOptions.layout.width / 16,"height":_vm.defaultOptions.layout.height / 2,"rx":"1"}}),_c('rect',{style:(_vm.batteryProgress),attrs:{"fill":_vm.progressColor,"x":_vm.defaultOptions.layout.progressPadding / 2,"y":_vm.defaultOptions.layout.progressPadding / 2}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
-var ProgressBarBatteryvue_type_template_id_6b9b8aac_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarBattery.vue?vue&type=template&id=61eedd4e&
+var ProgressBarBatteryvue_type_template_id_61eedd4e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-battery"}},[_c('svg',{style:(_vm.batteryStyleSvgFrame),attrs:{"id":"battery-progress"}},[_c('rect',{style:(_vm.batteryStyleFrame),attrs:{"fill":_vm.backgroundColor,"stroke-width":"3","rx":"5","ry":"5"}}),_c('rect',{attrs:{"fill":_vm.backgroundColor,"stroke-width":"3","x":_vm.defaultOptions.layout.width,"y":_vm.defaultOptions.layout.height / 4,"width":_vm.defaultOptions.layout.width / 16,"height":_vm.defaultOptions.layout.height / 2,"rx":"1"}}),_c('rect',{style:(_vm.batteryProgress),attrs:{"fill":_vm.progressColor,"x":_vm.defaultOptions.layout.progressPadding / 2,"y":_vm.defaultOptions.layout.progressPadding / 2}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarBatteryvue_type_template_id_61eedd4e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ProgressBarBattery.vue?vue&type=template&id=6b9b8aac&
+// CONCATENATED MODULE: ./src/components/ProgressBarBattery.vue?vue&type=template&id=61eedd4e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarBattery.vue?vue&type=script&lang=js&
 
@@ -3340,8 +3340,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_ProgressBarBatteryvue_type_script_lang_js_,
-  ProgressBarBatteryvue_type_template_id_6b9b8aac_render,
-  ProgressBarBatteryvue_type_template_id_6b9b8aac_staticRenderFns,
+  ProgressBarBatteryvue_type_template_id_61eedd4e_render,
+  ProgressBarBatteryvue_type_template_id_61eedd4e_staticRenderFns,
   false,
   null,
   null,
@@ -3350,18 +3350,15 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var ProgressBarBattery = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCircle.vue?vue&type=template&id=8f509f48&
-var ProgressBarCirclevue_type_template_id_8f509f48_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-circle"}},[_c('div',{style:(_vm.textStyleCircle),attrs:{"id":"cont"}},[_vm._v(" "+_vm._s(_vm.value+'%')+" ")]),_c('svg',{attrs:{"width":_vm.width,"height":_vm.height,"viewBox":"0 0 120 120"}},[_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.strokeWidth}}),_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.defaultOptions.progress.color,"stroke-width":_vm.defaultOptions.layout.strokeWidth,"stroke-dasharray":_vm.strokeCircle,"stroke-dashoffset":_vm.strokeCircleOffset}})])])}
-var ProgressBarCirclevue_type_template_id_8f509f48_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCircle.vue?vue&type=template&id=023e4bb7&
+var ProgressBarCirclevue_type_template_id_023e4bb7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-circle"}},[_c('div',{style:(_vm.textStyleCircle)},[_vm._v(" "+_vm._s(_vm.value + '%')+" ")]),_c('svg',{attrs:{"width":_vm.width,"height":_vm.height,"viewBox":"0 0 120 120"}},[_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.backgroundColor,"stroke-width":_vm.defaultOptions.layout.strokeWidth}}),_c('circle',{attrs:{"cx":"60","cy":"60","r":_vm.radiusCircle,"fill":"none","stroke":_vm.progressColor,"stroke-width":_vm.defaultOptions.layout.strokeWidth,"stroke-dasharray":_vm.strokeCircle,"stroke-dashoffset":_vm.strokeCircleOffset}})])])}
+var ProgressBarCirclevue_type_template_id_023e4bb7_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ProgressBarCircle.vue?vue&type=template&id=8f509f48&
+// CONCATENATED MODULE: ./src/components/ProgressBarCircle.vue?vue&type=template&id=023e4bb7&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCircle.vue?vue&type=script&lang=js&
 
-//
-//
-//
 //
 //
 //
@@ -3423,8 +3420,8 @@ var ProgressBarCirclevue_type_template_id_8f509f48_staticRenderFns = []
 
 var ProgressBarCircle_component = normalizeComponent(
   components_ProgressBarCirclevue_type_script_lang_js_,
-  ProgressBarCirclevue_type_template_id_8f509f48_render,
-  ProgressBarCirclevue_type_template_id_8f509f48_staticRenderFns,
+  ProgressBarCirclevue_type_template_id_023e4bb7_render,
+  ProgressBarCirclevue_type_template_id_023e4bb7_staticRenderFns,
   false,
   null,
   null,
@@ -3433,12 +3430,12 @@ var ProgressBarCircle_component = normalizeComponent(
 )
 
 /* harmony default export */ var ProgressBarCircle = (ProgressBarCircle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCylinder.vue?vue&type=template&id=464cd659&scoped=true&
-var ProgressBarCylindervue_type_template_id_464cd659_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-cylinder"}},[_c('svg',{attrs:{"id":"cylinder-progress","width":"150px","height":"120px"}},[_c('g',{staticClass:"progress-container",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"fill":_vm.defaultOptions.progress.backgroundColor}},[_c('rect',{attrs:{"x":"0","y":"20","width":"100%","height":"80"}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":"20","rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-content",attrs:{"stroke":_vm.cylinderColorStroke,"fill":_vm.cylinderProgressColor}},[_c('rect',{attrs:{"x":"0","y":_vm.rectY,"width":"100%","height":_vm.rectHeight}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":_vm.topCy,"rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-container"},[_c('ellipse',{staticClass:"top",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"cx":"75","cy":"20","rx":"50%","ry":"15","fill":"none"}})]),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
-var ProgressBarCylindervue_type_template_id_464cd659_scoped_true_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCylinder.vue?vue&type=template&id=f1691f2e&scoped=true&
+var ProgressBarCylindervue_type_template_id_f1691f2e_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-cylinder"}},[_c('svg',{attrs:{"id":"cylinder-progress","width":"150px","height":"120px"}},[_c('g',{staticClass:"progress-container",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"fill":_vm.backgroundColor}},[_c('rect',{attrs:{"x":"0","y":"20","width":"100%","height":"80"}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":"20","rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-content",attrs:{"stroke":_vm.cylinderColorStroke,"fill":_vm.cylinderProgressColor}},[_c('rect',{attrs:{"x":"0","y":_vm.rectY,"width":"100%","height":_vm.rectHeight}}),_c('ellipse',{staticClass:"top",attrs:{"cx":"75","cy":_vm.topCy,"rx":"50%","ry":"15"}}),_c('ellipse',{staticClass:"bottom",attrs:{"cx":"75","cy":"100","rx":"50%","ry":"15"}})]),_c('g',{staticClass:"progress-container"},[_c('ellipse',{staticClass:"top",attrs:{"stroke":_vm.cylinderBackgroundColorStroke,"cx":"75","cy":"20","rx":"50%","ry":"15","fill":"none"}})]),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarCylindervue_type_template_id_f1691f2e_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=template&id=464cd659&scoped=true&
+// CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=template&id=f1691f2e&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarCylinder.vue?vue&type=script&lang=js&
 
@@ -3542,8 +3539,8 @@ var ProgressBarCylindervue_type_template_id_464cd659_scoped_true_staticRenderFns
 });
 // CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ProgressBarCylindervue_type_script_lang_js_ = (ProgressBarCylindervue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=style&index=0&id=464cd659&lang=scss&scoped=true&
-var ProgressBarCylindervue_type_style_index_0_id_464cd659_lang_scss_scoped_true_ = __webpack_require__("65dc");
+// EXTERNAL MODULE: ./src/components/ProgressBarCylinder.vue?vue&type=style&index=0&id=f1691f2e&lang=scss&scoped=true&
+var ProgressBarCylindervue_type_style_index_0_id_f1691f2e_lang_scss_scoped_true_ = __webpack_require__("7e69");
 
 // CONCATENATED MODULE: ./src/components/ProgressBarCylinder.vue
 
@@ -3556,22 +3553,22 @@ var ProgressBarCylindervue_type_style_index_0_id_464cd659_lang_scss_scoped_true_
 
 var ProgressBarCylinder_component = normalizeComponent(
   components_ProgressBarCylindervue_type_script_lang_js_,
-  ProgressBarCylindervue_type_template_id_464cd659_scoped_true_render,
-  ProgressBarCylindervue_type_template_id_464cd659_scoped_true_staticRenderFns,
+  ProgressBarCylindervue_type_template_id_f1691f2e_scoped_true_render,
+  ProgressBarCylindervue_type_template_id_f1691f2e_scoped_true_staticRenderFns,
   false,
   null,
-  "464cd659",
+  "f1691f2e",
   null
   
 )
 
 /* harmony default export */ var ProgressBarCylinder = (ProgressBarCylinder_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarLine.vue?vue&type=template&id=37a758fb&
-var ProgressBarLinevue_type_template_id_37a758fb_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-line"}},[_c('svg',{style:(_vm.lineStyleSvgFrame),attrs:{"id":"line-progress"}},[_c('line',{attrs:{"x1":"0","y1":"50%","x2":"100%","y2":"50%","stroke":_vm.defaultOptions.progress.backgroundColor,"stroke-width":_vm.defaultOptions.layout.height}}),_c('line',{attrs:{"x1":"0","y1":"50%","x2":_vm.progressValue,"y2":"50%","stroke":_vm.progressColor,"stroke-width":_vm.lineProgressHeight}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
-var ProgressBarLinevue_type_template_id_37a758fb_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5a93d447-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarLine.vue?vue&type=template&id=3868962a&
+var ProgressBarLinevue_type_template_id_3868962a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"progress-bar-line"}},[_c('svg',{style:(_vm.lineStyleSvgFrame),attrs:{"id":"line-progress"}},[_c('line',{attrs:{"x1":"0","y1":"50%","x2":"100%","y2":"50%","stroke":_vm.backgroundColor,"stroke-width":_vm.defaultOptions.layout.height}}),_c('line',{attrs:{"x1":"0","y1":"50%","x2":_vm.progressValue,"y2":"50%","stroke":_vm.progressColor,"stroke-width":_vm.lineProgressHeight}}),_c('text',{style:(_vm.textStyle),attrs:{"x":_vm.horizontalTextAlignP,"y":_vm.verticalTextAlignP}},[_vm._v(" "+_vm._s(_vm.value)+"% ")])])])}
+var ProgressBarLinevue_type_template_id_3868962a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/ProgressBarLine.vue?vue&type=template&id=37a758fb&
+// CONCATENATED MODULE: ./src/components/ProgressBarLine.vue?vue&type=template&id=3868962a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ProgressBarLine.vue?vue&type=script&lang=js&
 
@@ -3637,8 +3634,8 @@ var ProgressBarLinevue_type_template_id_37a758fb_staticRenderFns = []
 
 var ProgressBarLine_component = normalizeComponent(
   components_ProgressBarLinevue_type_script_lang_js_,
-  ProgressBarLinevue_type_template_id_37a758fb_render,
-  ProgressBarLinevue_type_template_id_37a758fb_staticRenderFns,
+  ProgressBarLinevue_type_template_id_3868962a_render,
+  ProgressBarLinevue_type_template_id_3868962a_staticRenderFns,
   false,
   null,
   null,

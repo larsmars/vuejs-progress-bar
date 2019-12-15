@@ -8,7 +8,7 @@
       <g
         class="progress-container"
         :stroke="cylinderBackgroundColorStroke"
-        :fill="defaultOptions.progress.backgroundColor"
+        :fill="backgroundColor"
       >
         <rect
           x="0"

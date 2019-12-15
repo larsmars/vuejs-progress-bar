@@ -14,7 +14,6 @@ export const ProgressBarMixin = {
       },
       progress: {
         color: '#2dbd2d',
-        frameColor: '#333333',
         backgroundColor: '#333333'
       },
       layout: {
@@ -85,6 +84,31 @@ export const ProgressBarMixin = {
     verticalTextAlignP () {
       return this.defaultOptions.layout.verticalTextAlign + '%'
     },
+    batteryStyleFrame () {
+      return this.lineStyleSvgFrame
+    },
+    lineProgressHeight () {
+      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding)
+    },
+    batteryProgress () {
+      return {
+        height: px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding),
+        width: px(this.value * ((this.defaultOptions.layout.width - this.defaultOptions.layout.progressPadding) / 100))
+      }
+    },
+    lineStyleSvgFrame () {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width)
+      }
+    },
+    batteryStyleSvgFrame () {
+      return {
+        height: px(this.defaultOptions.layout.height),
+        width: px(this.defaultOptions.layout.width + (this.defaultOptions.layout.width / 16))
+      }
+    },
+    // Dynamic position of text horizontal
     horizontalTextAlignP () {
       if (this.defaultOptions.text.dynamicPosition) {
         let dynamicHorizontalTextAlign = 0
@@ -110,30 +134,6 @@ export const ProgressBarMixin = {
         } else {
           return this.defaultOptions.layout.horizontalTextAlign + '%'
         }
-      }
-    },
-    batteryStyleFrame () {
-      return this.lineStyleSvgFrame
-    },
-    lineProgressHeight () {
-      return px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding)
-    },
-    batteryProgress () {
-      return {
-        height: px(this.defaultOptions.layout.height - this.defaultOptions.layout.progressPadding),
-        width: px(this.value * ((this.defaultOptions.layout.width - this.defaultOptions.layout.progressPadding) / 100))
-      }
-    },
-    lineStyleSvgFrame () {
-      return {
-        height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width)
-      }
-    },
-    batteryStyleSvgFrame () {
-      return {
-        height: px(this.defaultOptions.layout.height),
-        width: px(this.defaultOptions.layout.width + (this.defaultOptions.layout.width / 16))
       }
     },
     // ProgressBar Colors
@@ -180,8 +180,8 @@ export const ProgressBarMixin = {
     progressColor () {
       return this.defaultOptions.progress.color
     },
-    frameColor () {
-      return this.defaultOptions.progress.frameColor
+    backgroundColor () {
+      return this.defaultOptions.progress.backgroundColor
     },
     // ProgressBar Value
     progressValue () {

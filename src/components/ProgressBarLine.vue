@@ -9,7 +9,7 @@
         y1="50%"
         x2="100%"
         y2="50%"
-        :stroke="defaultOptions.progress.backgroundColor"
+        :stroke="backgroundColor"
         :stroke-width="defaultOptions.layout.height"
       />
       <line

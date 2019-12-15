@@ -5,16 +5,16 @@
       :style="batteryStyleSvgFrame"
     >
       <rect
-        :fill="frameColor"
+        :fill="backgroundColor"
         stroke-width="3"
         :style="batteryStyleFrame"
         rx="5"
         ry="5"
       />
       <rect
-        :fill="frameColor"
+        :fill="backgroundColor"
         stroke-width="3"
-        :x="defaultOptions.layout.width - 0"
+        :x="defaultOptions.layout.width"
         :y="defaultOptions.layout.height / 4"
         :width="defaultOptions.layout.width / 16"
         :height="defaultOptions.layout.height / 2"

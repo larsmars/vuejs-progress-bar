@@ -1,10 +1,7 @@
 <template>
   <div id="progress-bar-circle">
-    <div
-      id="cont"
-      :style="textStyleCircle"
-    >
-      {{ value+'%' }}
+    <div :style="textStyleCircle">
+      {{ value + '%' }}
     </div>
     <svg
       :width="width"
@@ -16,7 +13,7 @@
         cy="60"
         :r="radiusCircle"
         fill="none"
-        :stroke="defaultOptions.progress.backgroundColor"
+        :stroke="backgroundColor"
         :stroke-width="defaultOptions.layout.strokeWidth"
       />
       <circle
@@ -24,7 +21,7 @@
         cy="60"
         :r="radiusCircle"
         fill="none"
-        :stroke="defaultOptions.progress.color"
+        :stroke="progressColor"
         :stroke-width="defaultOptions.layout.strokeWidth"
         :stroke-dasharray="strokeCircle"
         :stroke-dashoffset="strokeCircleOffset"

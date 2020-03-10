@@ -1,7 +1,7 @@
 {
   "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
-  "version": "1.2.1",
+  "version": "1.2.2-beta.0",
   "author": "LMH, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
   "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",
@@ -13,14 +13,14 @@
     "build-bundle": "vue-cli-service build --target lib --name ProgressBar ./src/components/index.js"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.2",
-    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
     "@vue/cli-service": "^4.1.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"

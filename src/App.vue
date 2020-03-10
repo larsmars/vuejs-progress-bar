@@ -8,7 +8,7 @@
 import ProgressBar from '../src/components/ProgressBar.vue'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     ProgressBar
   }

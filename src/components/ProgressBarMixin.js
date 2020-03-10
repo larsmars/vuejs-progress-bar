@@ -168,6 +168,7 @@ export const ProgressBarMixin = {
     },
     textStyleCircle () {
       return {
+        display: this.defaultOptions.text.hideText ? 'none' : 'inherit',
         color: this.defaultOptions.text.color,
         fontSize: px(this.defaultOptions.text.fontSize),
         fontFamily: this.defaultOptions.text.fontFamily,

@@ -30,7 +30,7 @@ Use: (in your local .vue file/component, html section)
     <progress-bar
       :options="options"
       :value="value"
-      />
+    />
 
 <!-- Options struct: -->
 options: {

@@ -1,7 +1,7 @@
 <template>
   <component
     :is="progressBarType"
-    class="progress-bar"
+    class="vuejs-progress-bar"
     :value="value"
     :options="options"
   />
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.progress-bar {
+.vuejs-progress-bar {
   display: inline-block;
   align-content: stretch;
   width: 0;

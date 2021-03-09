@@ -1,3 +1,4 @@
+<!-- npm run serve -->
 <template>
   <div id="app">
     <progress-bar :value="25" />

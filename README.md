@@ -27,10 +27,10 @@ Vue.use(ProgressBar)
 Use: (in your local .vue file/component, html section)
 
 ```xml
-    <progress-bar
-      :options="options"
-      :value="value"
-    />
+<progress-bar
+  :options="options"
+  :value="value"
+/>
 
 <!-- Options struct: -->
 options: {
@@ -82,3 +82,25 @@ options: {
 | strokeWidth     | Number           | 30           | Width of background of progress |
 | progressPadding | Number           | 0            | Padding between background and progress bar _(line only)_ |
 | type            | String           | line         | type of progress bar: _line_, _circle_, _cylinder_ or _battery_ |
+
+## Update package:
+
+### 1. Compile and build for production
+```
+npm run build
+```
+
+### 2. Publish to NPM
+```
+# Do some work...
+
+# x.x.1 -> x.x.2
+npm version patch
+
+# x.1.0 -> x.2.0
+npm version minor
+
+# 1.0.0 -> 2.0.0
+npm version major
+
+```

@@ -90,7 +90,13 @@ options: {
 npm run build
 ```
 
-### 2. Publish to NPM
+### 2. check into git
+```
+git add .
+git commit -m "Message.."
+```
+
+### 3. Publish to NPM
 ```
 # Do some work...
 

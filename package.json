@@ -1,7 +1,7 @@
 {
   "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": "Lars M Hejll, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
   "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",
@@ -17,8 +17,8 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.8",
     "@vue/cli-service": "^4.5.8",
-    "sass-loader": "^10.0.4",
     "node-sass": "4.14.1",
+    "sass-loader": "^10.0.4",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
   },

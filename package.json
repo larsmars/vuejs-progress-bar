@@ -1,7 +1,7 @@
 {
   "name": "vuejs-progress-bar",
   "description": "A progress bar component for Vue.js",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "author": "Lars M Hejll, hejlllars@hotmail.com , softwarefun.no",
   "license": "MIT",
   "homepage": "https://github.com/larsmars/vuejs-progress-bar#readme",

@@ -14,7 +14,8 @@ export const ProgressBarMixin = {
       },
       progress: {
         color: '#2dbd2d',
-        backgroundColor: '#333333'
+        backgroundColor: '#333333',
+        inverted: false
       },
       layout: {
         height: 36,
@@ -212,8 +213,9 @@ export const ProgressBarMixin = {
         this.topCy = ((-invertedVal * -0.8) + 20)
         this.cylText = (100 - (invertedVal) + '%')
       } else if (this.circle) {
-        this.strokeCircle = 2 * Math.PI * this.radiusCircle
-        this.strokeCircleOffset = this.strokeCircle * ((100 - val) / 100)
+          this.strokeCircle = (2 * Math.PI * this.radiusCircle)
+          this.strokeCircleOffset = this.defaultOptions.progress.inverted ?
+            (this.strokeCircle * ((val) / 100)) + (this.strokeCircle) : (this.strokeCircle * ((100 - val) / 100))
       }
     },
     // Used for cylinder

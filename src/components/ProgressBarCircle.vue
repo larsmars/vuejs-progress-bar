@@ -17,9 +17,10 @@
         :stroke-width="defaultOptions.layout.strokeWidth"
       />
       <circle
-        cx="60"
+        cx="-60"
         cy="60"
         :r="radiusCircle"
+        class="progress"
         fill="none"
         :stroke="progressColor"
         :stroke-width="defaultOptions.layout.strokeWidth"
@@ -50,3 +51,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.progress {
+  transform: rotate(-90deg); 
+}
+</style>
